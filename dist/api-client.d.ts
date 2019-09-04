@@ -17,6 +17,6 @@ export declare class APIClient {
      * @param callback Invoke an optional callback first
      */
     private callbackAndResolve;
-    sessions_get(offerId: string, callback?: Function): Promise<any>;
-    conversions_trigger(sessionId: string, offerId: string, conversionGoalId: string, callback?: Function): Promise<any>;
+    sessions_get(callback?: Function): Promise<any>;
+    conversions_trigger(sessionId: string, conversionGoalId: string, callback?: Function): Promise<any>;
 }

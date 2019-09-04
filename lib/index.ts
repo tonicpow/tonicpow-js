@@ -8,20 +8,21 @@ class ApiMethods {
     }
   }
 
-  getSession(offerId: string, callback?: Function): Promise<any> {
+  getSession(callback?: Function): Promise<any> {
     const apiClient = new APIClient(this.options);
-    return apiClient.sessions_get(offerId, callback);
+    return apiClient.sessions_get(callback);
   }
 
-  triggerConversion(sessionId: string, offerId: string, conversionGoalId: string, callback?: Function): Promise<any> {
+  triggerConversion(sessionId: string, conversionGoalId: string, callback?: Function): Promise<any> {
     const apiClient = new APIClient(this.options);
-    return apiClient.conversions_trigger(sessionId, offerId, conversionGoalId, callback);
+    return apiClient.conversions_trigger(sessionId, conversionGoalId, callback);
   }
 
 }
 
 const defaultOptions: any = {
-  advertiser_id: '',
+  advertiser_public_key: null,
+  advertiser_secret_key: null,
   api_url: 'https://api.tonicpow.com',
 }
 

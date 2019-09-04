@@ -1,4 +1,5 @@
 import axios from 'axios';
+import * as Cookies from 'js-cookie';
 
 export interface TonicPowClientOptions {
     advertiser_public_key?: string;
@@ -9,6 +10,7 @@ export interface TonicPowClientOptions {
 const defaultOptions: TonicPowClientOptions = {
     api_url: 'https://api.tonicpow.com',
 }
+
 /**
  * API Client
  */
@@ -35,16 +37,36 @@ export class APIClient {
         }
     }
 
-    sessions_get(offerId: string, callback?: Function): Promise<any> {
+    sessions_get(callback?: Function): Promise<any> {
         return new Promise((resolve, reject) => {
-            const cookies = document['tonicpow_advertiser_cookie'];
-            console.log('cookies extracted', cookies, offerId);
-            this.callbackAndResolve(resolve, cookies, callback);
+            const val = Cookies.get('advertiser_public_key_cookie_' + this.options.advertiser_public_key);
+
+            if (val && val !== '') {
+                this.callbackAndResolve(resolve, val, callback);
+            } else {
+                this.callbackAndResolve(resolve, null, callback);
+            }
         });
     }
-    conversions_trigger(sessionId: string, offerId: string, conversionGoalId: string, callback?: Function): Promise<any> {
+
+    conversions_trigger(sessionId: string, conversionGoalId: string, callback?: Function): Promise<any> {
         return new Promise((resolve, reject) => {
-            console.log('conversions_trigger', this.options.advertiser_secret_key, sessionId, offerId, conversionGoalId);
+            axios.post(this.fullUrl + `/conversions`, {
+                    private_guid: this.options.advertiser_secret_key,
+                    conversion_goal_name: conversionGoalId,
+                    click_tx_id: sessionId,
+                },
+                {
+                    headers: {}
+                }
+            ).then((response) => {
+                this.callbackAndResolve(resolve, response.data, callback);
+            }).catch((ex) => {
+                this.callbackAndResolve(resolve, {
+                    code: ex.response.status,
+                    message: ex.message ? ex.message : ex.toString()
+                }, callback)
+            })
             this.callbackAndResolve(resolve, {}, callback);
         });
     }

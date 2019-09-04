@@ -7,17 +7,18 @@ class ApiMethods {
             this.options = options;
         }
     }
-    getSession(offerId, callback) {
+    getSession(callback) {
         const apiClient = new api_client_1.APIClient(this.options);
-        return apiClient.sessions_get(offerId, callback);
+        return apiClient.sessions_get(callback);
     }
-    triggerConversion(sessionId, offerId, conversionGoalId, callback) {
+    triggerConversion(sessionId, conversionGoalId, callback) {
         const apiClient = new api_client_1.APIClient(this.options);
-        return apiClient.conversions_trigger(sessionId, offerId, conversionGoalId, callback);
+        return apiClient.conversions_trigger(sessionId, conversionGoalId, callback);
     }
 }
 const defaultOptions = {
-    advertiser_id: '',
+    advertiser_public_key: null,
+    advertiser_secret_key: null,
     api_url: 'https://api.tonicpow.com',
 };
 class TonicPow {

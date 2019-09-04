@@ -41,11 +41,13 @@ var tonicpow = require('tonicpow-js').instance();
 <!-- Browser -->
 <script src="dist/bundle.min.js"></script>
 <script language="javascript">
-    // ...
-    var tonicpow = new TonicPow({ secret_key: 'private guid here -- use only on backend and not on browser' });
+    // Use the advertiser_public_key on your backend to fire `getSession`
+    var tonicpow = new TonicPow({ advertiser_public_key: 'public guid here use on front-end' });
+    // Use the advertiser_secret_key on your backend to fire `triggerConversion`
+    var tonicpow = new TonicPow({ advertiser_secret_key: 'private guid here -- use only on backend and not on browser' });
     // Return the session of the user if there was one
     // Otherwise it is null
-    var result = await tonicpow.session.get();
+    var result = await tonicpow.getSession();
     console.log('TonicPow Session', result);
 </script>
 ```
@@ -70,10 +72,10 @@ Example:
 ```javascript
 
 // Await style with promises
-var result = await tonicpow.session.get();
+var result = await tonicpow.getSession();
 
 // Callback style
-tonicpow.session.get(function(result) {
+tonicpow.getSession(function(result) {
     console.log('result', result);
 });
 
@@ -81,17 +83,17 @@ tonicpow.session.get(function(result) {
 
 ### getSession
 
-*NOTE: Call this from the front-end to obtain the offer session id to pass to your backend*
+*NOTE: Call this from the front-end to obtain the session id to pass to your backend*
 
 Get the session identifier if a user converted through a TonicPow offer shortlink
 Set to  `null`  if there is no session. (ie: no-op)
 
 ```javascript
-var result = await tonicpow.getSession('offerPublic-Guid');
+
+var tonicpow = new TonicPow({ advertiser_public_key: 'public guid here use on front-end' });
+var result = await tonicpow.getSession();
 /*
-    {
-        session_id: '513014372338f079f005eedc85359e4d96b8440e75beb8c35c4182e0c19a1a12
-    }
+=> 513014372338f079f005eedc85359e4d96b8440e75beb8c35c4182e0c19a1a12
 */
 ```
 
@@ -101,14 +103,10 @@ var result = await tonicpow.getSession('offerPublic-Guid');
 
 Trigger a conversion against a Conversion Goal.
 
-Only the `conversion_goal_id` and `offer_id` are required.
-
 ```javascript
 
-var result = await tonicpow.conversions.trigger({
-        conversion_goal_id: 'signup-conversion',
-        offer_session_id: '...', // This is passed to your backend from your front end from the `tonicpow.getSession` method
-    });
+var tonicpow = new TonicPow({ advertiser_secret_key: 'private guid here -- use only on backend and not on browser' });
+var result = await tonicpow.triggerConversion('session id from above', 'signup-conversion');
 /*
     {
         conversion_id: 'a13014372338f079f005eedc85359e4096b8440e75beb2c35c4182e0c19a1a87

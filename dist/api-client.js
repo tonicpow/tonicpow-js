@@ -1,5 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+const axios_1 = require("axios");
+const Cookies = require("js-cookie");
 const defaultOptions = {
     api_url: 'https://api.tonicpow.com',
 };
@@ -26,16 +28,33 @@ class APIClient {
             return resolveOrReject(data);
         }
     }
-    sessions_get(offerId, callback) {
+    sessions_get(callback) {
         return new Promise((resolve, reject) => {
-            const cookies = document['tonicpow_advertiser_cookie'];
-            console.log('cookies extracted', cookies, offerId);
-            this.callbackAndResolve(resolve, cookies, callback);
+            const val = Cookies.get('advertiser_public_key_cookie_' + this.options.advertiser_public_key);
+            if (val && val !== '') {
+                this.callbackAndResolve(resolve, val, callback);
+            }
+            else {
+                this.callbackAndResolve(resolve, null, callback);
+            }
         });
     }
-    conversions_trigger(sessionId, offerId, conversionGoalId, callback) {
+    conversions_trigger(sessionId, conversionGoalId, callback) {
         return new Promise((resolve, reject) => {
-            console.log('conversions_trigger', this.options.advertiser_secret_key, sessionId, offerId, conversionGoalId);
+            axios_1.default.post(this.fullUrl + `/conversions`, {
+                private_guid: this.options.advertiser_secret_key,
+                conversion_goal_name: conversionGoalId,
+                click_tx_id: sessionId,
+            }, {
+                headers: {}
+            }).then((response) => {
+                this.callbackAndResolve(resolve, response.data, callback);
+            }).catch((ex) => {
+                this.callbackAndResolve(resolve, {
+                    code: ex.response.status,
+                    message: ex.message ? ex.message : ex.toString()
+                }, callback);
+            });
             this.callbackAndResolve(resolve, {}, callback);
         });
     }
