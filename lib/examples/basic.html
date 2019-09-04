@@ -26,9 +26,14 @@
       });
 
       $(document).ready(function(){
-        $('#fetchSessions').click((e) => {
-          var result = await tonicpow.getSessions($('#offerSessionGuid').val());
+        var tonicpow = new TonicPow({
+          advertiser_public_key: $('#advertiserPublicKey').val(),
+        });
+
+        $('#fetchSessions').click(async (e) => {
+          var result = await tonicpow.getSessions($('#offerId').val());
           console.log('result', result);
+          document.getElementById('results').innerHTML = JSON.stringify(result);
         });
       });
     </script>
@@ -40,9 +45,14 @@
       TonicPow session identifier will show up (if there is a session established):
     </p>
 
-    Test Fetch Sessions:
-    <input type="text" id="offerSessionGuid"/>
-    <button id="fetchSessions">Fetch Sessions</button>
+    Test
+
+    Advertiser Public  Key
+    <input type="text" id="advertiserPublicKey"/>
+
+    Offer Id
+    <input type="text" id="offerId"/>
+    <button id="fetchSessions">Fetch Offer Session</button>
 
     <div id="results" style="word-break: break-word"></div>
   </body>
