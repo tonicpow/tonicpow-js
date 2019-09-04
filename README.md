@@ -22,10 +22,8 @@ Interact with the TonicPow API.
     - [Live Browser Example](https://media.bitcoinfiles.org/94dc4e05dc1a1cd87d62e3b1d69b7f0dd15dd7555948849b9ce7e81a9f690993)
     - [Typescript Definitions](https://github.com/BitIndex/bitindex-sdk/blob/master/dist)
 * [Operations](#operations)
-    - [Sessions](#sessions)
-        - [sessions.get](#sessionsGet)
-    - [Conversions](#conversions)
-        - [conversions.trigger](#conversionsTrigger)
+    - [getSession](#sessions)
+    - [triggerConversion](#conversions)
 
 ## Installation and Usage
 
@@ -82,15 +80,15 @@ tonicpow.session.get(function(result) {
 
 ```
 
-### Sessions
+### getSession
 
-#### sessions.get
+*NOTE: Call this from the front-end to obtain the offer session id to pass to your backend*
 
-Get the session identifier if a user converted through a TonicPow shortlink.
+Get the session identifier if a user converted through a TonicPow offer shortlink
 Set to  `null`  if there is no session. (ie: no-op)
 
 ```javascript
-var result = await tonicpow.session.get();
+var result = await tonicpow.getSession('offerPublic-Guid');
 /*
     {
         session_id: '513014372338f079f005eedc85359e4d96b8440e75beb8c35c4182e0c19a1a12
@@ -98,21 +96,19 @@ var result = await tonicpow.session.get();
 */
 ```
 
+### triggerConversion
 
-### Conversions
-
-#### conversions.trigger
+*NOTE: Call this from your backend to trigger a conversion*
 
 Trigger a conversion against a Conversion Goal.
 
 Only the `conversion_goal_id` and `offer_id` are required.
 
 ```javascript
+
 var result = await tonicpow.conversions.trigger({
         conversion_goal_id: 'signup-conversion',
-        offer_id: '51301472338f079f005eedc85359e4396b8440e75beb6c35c4182e0c19a1a12',
-        user_id: 'your app specific user id for tracking (optional)',
-        metadata: 'additional metadata (optional)'
+        offer_session_id: '...', // This is passed to your backend from your front end from the `tonicpow.getSession` method
     });
 /*
     {
@@ -120,9 +116,6 @@ var result = await tonicpow.conversions.trigger({
     }
 */
 ```
-
-
-
 
 ## Build and Test
 
