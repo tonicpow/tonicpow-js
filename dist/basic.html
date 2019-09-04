@@ -5,16 +5,31 @@
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <title>TonicPow Example</title>
     <base href="/"/>
-    <script src="INSERT STATIC CDN LINK TO tonicpow.js"></script>
+    <script src="https://raw.githubusercontent.com/tonicpow/tonicpow-js/master/dist/bundle.min.js"></script>
+    <script
+    src="https://code.jquery.com/jquery-3.4.1.min.js"
+    integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+    crossorigin="anonymous"></script>
     <script language="javascript">
       // On ready taken from https://stackoverflow.com/a/7053197
       function r(f){/in/.test(document.readyState)?setTimeout(r,9,f):f()}
       r(async () => {
+        /*
         // When content loaded in page on ready, then run this code....
-        var tonicpow = new TonicPow();
-        var result = await tonicpow.session.get();
-        console.log('result', result);
+        var tonicpow = new TonicPow({
+          advertiser_public_key: 'advertiser1',
+        });
+        var result = await tonicpow.getSessions('offerId');
+        console.log('offerSessions', result);
         document.getElementById('results').innerHTML = JSON.stringify(result);
+        */
+      });
+
+      $(document).ready(function(){
+        $('#fetchSessions').click((e) => {
+          var result = await tonicpow.getSessions($('#offerSessionGuid').val());
+          console.log('result', result);
+        });
       });
     </script>
   </head>
@@ -24,6 +39,11 @@
     <p>
       TonicPow session identifier will show up (if there is a session established):
     </p>
+
+    Test Fetch Sessions:
+    <input type="text" id="offerSessionGuid"/>
+    <button id="fetchSessions">Fetch Sessions</button>
+
     <div id="results" style="word-break: break-word"></div>
   </body>
 </html>
