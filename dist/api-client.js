@@ -41,7 +41,7 @@ class APIClient {
     }
     conversions_trigger(sessionId, conversionGoalId, callback) {
         return new Promise((resolve, reject) => {
-            axios_1.default.post(this.fullUrl + `/conversions`, {
+            axios_1.default.post(this.fullUrl + `conversions`, {
                 private_guid: this.options.advertiser_secret_key,
                 conversion_goal_name: conversionGoalId,
                 click_tx_id: sessionId,
