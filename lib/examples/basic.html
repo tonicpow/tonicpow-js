@@ -1,64 +1,96 @@
- <!DOCTYPE html>
-<html>
+<!DOCTYPE html>
+<html lang="en">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <title>TonicPow Example</title>
+    <meta name="bitcoin-address" content="1LWyDs4qzmfAhGpSZk1K1kLmNdafBDdJSD">
+    <meta name="author" content="@AttilaAros, @wildsatchmo, @mrz1818">
+    <title>TonicPow - TonicJS Front-End Implementation Example</title>
+    <link rel='shortcut icon' type='image/x-icon' href='favicon.ico' />
     <base href="/"/>
-    <script src="/dist/bundle.min.js"></script>
+    <script src="bundle.min.js"></script>
     <script
     src="https://code.jquery.com/jquery-3.4.1.min.js"
     integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
     crossorigin="anonymous"></script>
-    <script language="javascript">
+    <script type="application/javascript">
       // On ready taken from https://stackoverflow.com/a/7053197
-      function r(f){/in/.test(document.readyState)?setTimeout(r,9,f):f()}
+      /*function r(f){/in/.test(document.readyState)?setTimeout(r,9,f):f()}
       r(async () => {
-        var tonicpow = new TonicPow({
-          advertiser_public_key: 'advertiser_public_key_cookie_f442ccc91f3f4ff9af3b20c2f877a4c8',
+        // Set the public key
+        let tonicPow = new TonicPow({
+          advertiser_public_key: 'xxxxxx',
         });
-        console.log('tonicpow', tonicpow);
 
-        /*
-        // When content loaded in page on ready, then run this code....
-        var tonicpow = new TonicPow({
-          advertiser_public_key: 'advertiser1',
-        });
-        var result = await tonicpow.getSessions('offerId');
-        console.log('offerSessions', result);
-        document.getElementById('results').innerHTML = JSON.stringify(result);
-        */
-      });
+        // Get the active session id
+        let id = await tonicPow.api.getSession();
+      });*/
 
+      // Example using jQuery
       $(document).ready(function(){
-        var tonicpow = new TonicPow({
-          advertiser_public_key: $('#advertiserPublicKey').val(),
+
+        // Create the tonicPow class and set the advertiser_public_key
+        let tonicSdk = new TonicPow({
+          advertiser_public_key: $('#offerId').val(),
         });
-        console.log('tonicpow', tonicpow);
-        $('#fetchSessions').click(async (e) => {
-          var result = await tonicpow.api.getSession();
-          console.log('result', result);
-          document.getElementById('results').innerHTML = JSON.stringify(result);
+
+        // Demo - Create new session will place a cookie (imitates a user coming through a TonicPow offer shortlink)
+        $('#createNewSession').click(async (e) => {
+
+          // Create a new cookie with the advertiser public key
+          let d = new Date;
+          d.setTime(d.getTime() + 24 * 60 * 60 * 1000);
+          let id = [...Array(32)].map(i=>(~~(Math.random()*36)).toString(36)).join('')
+          document.cookie = "advertiser_public_key_cookie_"+tonicSdk.options.advertiser_public_key + "=" + id + ";path=/;expires=" + d.toGMTString();
+        });
+
+        // Click fetch sessions (returns an active TonicPow session id if found)
+        // response will be null if not found
+        $('#fetchSession').click(async (e) => {
+          let id = await tonicSdk.api.getSession();
+          document.getElementById('activeSession').innerHTML = JSON.stringify(id);
         });
       });
     </script>
+    <style type="text/css">
+      html {
+        font-family: Tahoma, Arial, sans-serif;
+      }
+      .footer {
+        position: fixed;
+        left: 50%;
+        bottom: 20px;
+        transform: translate(-50%, -50%);
+        margin: 0 auto;
+      }
+      .container {
+        margin-top: 15px;
+        font-weight: bold;
+      }
+    </style>
   </head>
   <body>
-    <a href="https://www.tonicpow.com">TonicPow.com</a>
-    <a href="https://www.github.com/TonicPow/tonicpow-js">Github</a>
-    <p>
-      TonicPow session identifier will show up (if there is a session established):
-    </p>
 
-    Test
+    <div class="container">
+      1) Create a new TonicPow session (emulates a visitor via TonicPow)
+    </div>
+    <button id="createNewSession">Create Session</button>
 
-    Advertiser Public  Key
-    <input type="text" id="advertiserPublicKey"/>
+    <div class="container">
+      2) Enter an Offer Public GUID (this is located on the offer page)
+    </div>
+    <input type="text" id="offerId" value="the-offer-id"/>
 
-    Offer Id
-    <input type="text" id="offerId"/>
-    <button id="fetchSessions">Fetch Offer Session</button>
+    <div class="container">
+      3) Fetch the current TonicPow session
+    </div>
+    <button id="fetchSession">Fetch Session</button>
 
-    <div id="results" style="word-break: break-word"></div>
+    <pre id="activeSession" style="word-break: break-word"></pre>
+
+    <div class="footer">
+      <a href="https://tonicpow.com/?af=tonicpow-js-example" target="_blank">TonicPow.com</a> |
+      <a href="https://github.com/TonicPow/tonicpow-js" target="_blank">Github</a>
+    </div>
   </body>
 </html>

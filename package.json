@@ -5,56 +5,77 @@
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
-    "build": "tsc && gulp build",
+    "build": "tsc && gulp",
     "test": "mocha --reporter spec",
     "prepare": "npm run build"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/TonicPow/tonicpow-js.git"
+    "url": "https://github.com/tonicpow/tonicpow/"
   },
   "author": "TonicPow.com",
   "license": "Open BSV",
   "bugs": {
-    "url": "https://github.com/TonicPow/tonicpow-js.git/issues"
+    "url": "https://github.com/TonicPow/tonicpow-js/issues"
   },
-  "homepage": "https://github.com/TonicPow/tonicpow-js.git#readme",
+  "contributors": [
+    {
+      "name": "Satchmo",
+      "url": "https://github.com/rohenaz/"
+    },
+    {
+      "name": "MrZ",
+      "url": "https://github.com/mrz1836/"
+    },
+    {
+      "name": "Attila",
+      "url": "https://github.com/attilaaf/"
+    }
+  ],
+  "keywords": [
+    "tonic",
+    "tonicpow",
+    "tonic pow",
+    "offers",
+    "bitcoin",
+    "bsv"
+  ],
+  "homepage": "https://github.com/TonicPow/tonicpow-js",
   "devDependencies": {
-    "@babel/cli": "^7.1.2",
-    "@babel/core": "^7.1.2",
+    "@babel/cli": "^7.6.4",
+    "@babel/core": "^7.6.4",
     "@babel/plugin-transform-arrow-functions": "^7.0.0",
-    "@babel/preset-env": "^7.1.0",
+    "@babel/preset-env": "^7.6.3",
     "babelify": "^10.0.0",
     "browserify": "^16.2.3",
     "browserify-shim": "^3.8.14",
     "chai": "^4.2.0",
-    "gulp": "^3.9.1",
+    "gulp": "^4.0.2",
     "gulp-batch": "^1.0.5",
-    "gulp-clean-css": "^3.10.0",
+    "gulp-clean-css": "^4.2.0",
     "gulp-clone": "^2.0.1",
     "gulp-concat": "^2.6.1",
     "gulp-concat-css": "^3.1.0",
-    "gulp-cssimport": "^6.0.1",
-    "gulp-foreach": "^0.1.0",
-    "gulp-header": "^2.0.7",
+    "gulp-cssimport": "^7.0.0",
+    "gulp-header": "^2.0.9",
     "gulp-htmlmin": "^5.0.1",
     "gulp-less": "^4.0.1",
-    "gulp-livereload": "^4.0.0",
-    "gulp-sass": "^4.0.1",
+    "gulp-livereload": "^4.0.2",
+    "gulp-sass": "^4.0.2",
     "gulp-sourcemaps": "^2.6.5",
     "gulp-typescript": "^5.0.1",
     "gulp-uglify": "^3.0.2",
     "gulp-uglify-es": "^1.0.4",
     "gulp-watch": "^5.0.1",
-    "mocha": "^5.2.0",
+    "mocha": "^6.2.1",
     "streamqueue": "^1.1.2",
     "tsify": "^4.0.1",
-    "typescript": "^3.3.3",
+    "typescript": "^3.6.4",
     "vinyl-buffer": "^1.0.1",
     "vinyl-source-stream": "^2.0.0"
   },
   "dependencies": {
-    "axios": "^0.18.0",
+    "axios": "^0.19.0",
     "js-cookie": "^2.2.1"
   },
   "files": [

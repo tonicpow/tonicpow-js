@@ -1,19 +1,19 @@
-var gulp = require("gulp");
-var ts = require("gulp-typescript");
-var browserify = require("browserify");
-var source = require('vinyl-source-stream');
-var tsify = require("tsify");
+let gulp = require("gulp");
+let ts = require("gulp-typescript");
+let browserify = require("browserify");
+let source = require('vinyl-source-stream');
+let tsify = require("tsify");
 let uglify = require('gulp-uglify-es').default;
 // var uglify = require('gulp-uglify');
-var sourcemaps = require('gulp-sourcemaps');
-var buffer = require('vinyl-buffer');
-var paths = {
+let sourcemaps = require('gulp-sourcemaps');
+let buffer = require('vinyl-buffer');
+let paths = {
     pages: ['lib/examples/*.html']
 };
-var header = require('gulp-header');
+let header = require('gulp-header');
 // using data from package.json
-var pkg = require('./package.json');
-var banner = ['/**',
+let pkg = require('./package.json');
+let banner = ['/**',
   ' * <%= pkg.name %> - <%= pkg.description %>',
   ' * @version v<%= pkg.version %>',
   ' * @link <%= pkg.homepage %>',
@@ -46,12 +46,19 @@ var banner = ['/**',
   ' */',
   ''].join('\n');
 
-gulp.task("copy-html", function () {
+/*gulp.series('copy-html', () =>
+
+  gulp.src(paths.pages)
+    .pipe(gulp.dest("dist"))
+
+)*/
+
+/*gulp.series("copy-html", function () {
   return gulp.src(paths.pages)
       .pipe(gulp.dest("dist"));
-});
+});*/
 
-gulp.task("build", ['copy-html'], function () {
+/*gulp.task("build", ['copy-html'], function () {
   return browserify({
       basedir: '.',
       debug: true,
@@ -66,4 +73,28 @@ gulp.task("build", ['copy-html'], function () {
   .pipe(uglify())
   .pipe(header(banner, { pkg : pkg } ))
   .pipe(gulp.dest("dist"));
-});
+});*/
+
+function buildPackage() {
+  return browserify({
+    basedir: '.',
+    debug: true,
+    entries: ['lib/index.ts'],
+    cache: {},
+    packageCache: {}
+  })
+    .plugin(tsify)
+    .bundle()
+    .pipe(source('bundle.min.js'))
+    .pipe(buffer())
+    .pipe(uglify())
+    .pipe(header(banner, { pkg : pkg } ))
+    .pipe(gulp.dest("dist"));
+}
+
+function copyHtml() {
+  return gulp.src(paths.pages)
+    .pipe(gulp.dest("dist"));
+}
+
+exports.default = gulp.series(copyHtml, buildPackage);

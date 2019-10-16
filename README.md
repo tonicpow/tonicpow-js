@@ -1,87 +1,71 @@
-# TonicPow Javascript SDK
-https://www.tonicpow.com
+# TonicPow's [Javascript SDK](https://tncpw.co/tonicpow.js)
+Official JS implementation for interacting with the TonicPow API
 
-TonicPow Javascript SDK
-
----
-## Overview
-
-Interact with the TonicPow API.
-
----
 ## Table of Contents
-* [Installation and Usage](#installation-and-usage)
-* [Prerequisites](#Prerequisites)
-* [What's Included in this SDK](#whats-Included-in-this-SDK)
-* [Endpoints](#endpoints)
-* [Promises vs. Callbacks](#promises-vs-callback)
-* [Browser Examples](https://github.com/TonicPow/tonicpow-js/tree/master/lib/examples)
-* [Distribution](https://github.com/TonicPow/tonicpow-js/tree/master/dist)
-    - [Latest Bundle](https://github.com/TonicPow/tonicpow-js/blob/master/dist/bundle.min.js)
-    - [Basic Browser Example](https://github.com/TonicPow/tonicpow-js/blob/master/dist/basic.html)
-    - [Typescript Definitions](https://github.com/TonicPow/tonicpow-js/blob/master/dist)
-* [Operations](#operations)
-    - [getSession](#sessions)
-    - [triggerConversion](#conversions)
+- [Getting Started](#getting-started)
+- [Installation](#installation)
+- [Documentation](#documentation)
+- [Examples](#examples)
+- [Code Standards](#code-standards)
+- [Usage](#usage)
+- [Maintainers](#maintainers)
+- [Contributing](#contributing)
+- [License](#license)
 
-## Installation and Usage
+## Getting Started
+This will cover using the TonicPow SDK to trigger a conversion. 
+For this example we assume you have a front-end and back-end application.
+Here is an [example in Go](https://github.com/tonicpow/tonicpow-go)
 
-**Installation**
-```sh
-npm install tonicpow-js --save
-```
+#### Prerequisites
+- You have a front-end application to capture the `session` from the visitor from TonicPow
+- You have a back-end server to trigger the conversion (IE: [node](https://nodejs.org/en/))
+- You already created an offer from [TonicPow](https://offers.tonicpow.com/offers/new)
+- You have the `private_guid` for the offer, which is the same as the `advertiser_secret_key`
 
-**Include**
-```javascript
-// Node
-var tonicpow = require('tonicpow-js').instance();
-```
-
+#### Install in your project (front-end)
 ```html
-<!-- Browser -->
-<script src="dist/bundle.min.js"></script>
+<script src="https://tncpw.co/tonicpow.js"></script>
 <script language="javascript">
     // Use the advertiser_public_key on your backend to fire `getSession`
-    var tonicpow = new TonicPow({ advertiser_public_key: 'public guid here use on front-end' });
-    // Use the advertiser_secret_key on your backend to fire `triggerConversion`
-    var tonicpow = new TonicPow({ advertiser_secret_key: 'private guid here -- use only on backend and not on browser' });
-    // Return the session of the user if there was one
-    // Otherwise it is null
-    var result = await tonicpow.getSession();
-    console.log('TonicPow Session', result);
+    let tonicpow = new TonicPow({ advertiser_public_key: 'public_guid here use on front-end' });
+    // Return the session of the user if there was one, otherwise it is null
+    let sessionResult = await tonicpow.getSession();
+    console.log('TonicPow Session', sessionResult);
 </script>
 ```
 
-## Prerequisites
-
-- Create an offer at https://offers.tonicpow.com
-- Use the 'Private GUID' of an offer as the API key
-
-## What's Included in this SDK
-
-### TonicPow API Interface
-
-Documentation: https://www.tonicpow.com
-
-### Promises vs. Callback
-
-Both `await` and callback styles are supported for all methods.
-
-Example:
-
-```javascript
-
-// Await style with promises
-var result = await tonicpow.getSession();
-
-// Callback style
-tonicpow.getSession(function(result) {
-    console.log('result', result);
-});
-
+On any request to your back-end, pass this value across the session
+```text
+?tonicpow_session=sessionResult
 ```
 
-### getSession
+#### Install via npm (back-end)
+```bash
+$ npm install tonicpow-js --save
+``` 
+
+And load the module in your code:
+```javascript 
+let tonicpow = require('tonicpow-js').instance();
+```
+
+Example of triggering a conversion:
+```javascript 
+var result = await tonicpow.triggerConversion('tonicpow_session', 'signup-conversion');
+```
+
+## Installation
+```bash
+$ npm install
+$ npm run build
+$ npm test
+```
+
+## Documentation
+More documentation can be found on [TonicPow](https://tonicpow.com)
+
+#### getSession()
 
 *NOTE: Call this from the front-end to obtain the session id to pass to your backend*
 
@@ -89,7 +73,6 @@ Get the session identifier if a user converted through a TonicPow offer shortlin
 Set to  `null`  if there is no session. (ie: no-op)
 
 ```javascript
-
 var tonicpow = new TonicPow({ advertiser_public_key: 'public guid here use on front-end' });
 var result = await tonicpow.getSession();
 /*
@@ -97,16 +80,15 @@ var result = await tonicpow.getSession();
 */
 ```
 
-### triggerConversion
+### triggerConversion()
 
 *NOTE: Call this from your backend to trigger a conversion*
 
 Trigger a conversion against a Conversion Goal.
 
 ```javascript
-
 var tonicpow = new TonicPow({ advertiser_secret_key: 'private guid here -- use only on backend and not on browser' });
-var result = await tonicpow.triggerConversion('session id from above', 'signup-conversion');
+var result = await tonicpow.triggerConversion('session-id-from-parameter', 'signup-conversion');
 /*
     {
         conversion_id: 'a13014372338f079f005eedc85359e4096b8440e75beb2c35c4182e0c19a1a87
@@ -114,20 +96,48 @@ var result = await tonicpow.triggerConversion('session id from above', 'signup-c
 */
 ```
 
-## Build and Test
+#### Promises vs. Callback
 
+Both `await` and callback styles are supported for all methods.
+
+Example:
+```javascript
+// Await style with promises
+var result = await tonicpow.getSession();
+
+// Callback style
+tonicpow.getSession(function(result) {
+    console.log('result', result);
+});
 ```
-npm run build
-npm test
+
+
+
+
+## Examples
+
+Trigger a conversion:
+```javascript
+var tonicpow = new TonicPow({ advertiser_secret_key: '1234567890' });
+await tonicpow.triggerConversion('slenrw9pe8fw4t8pjw8', 'signup');
 ```
 
------------
+## Code Standards
+- Always use the language's best practices!
 
+## Usage
+- Front-end for capturing the `session` from all incoming TonicPow visitors
+- Back-end for triggering conversions
 
- ## Any questions or ideas?
+## Maintainers
+[Attila](https://github.com/attilaaf?affiliate=1attila) - [Satchmo](https://github.com/rohenaz?affiliate=1satchmo) - [MrZ](https://github.com/mrz1836?affiliate=1mrz)
+                                                                                                                                                           
+Support the development of this project and the [TonicPow](https://tonicpow.com/) team 🙏
 
- We would love to hear from you!
- https://www.TonicPow.com
- https://twitter.com/TonicPow
+## Contributing
+Feel free to dive in! [Open an issue](https://github.com/tonicpow/tonicpow-js/issues/new) or submit PRs.
 
+There is also a [Golang implementation](https://github.com/tonicpow/tonicpow-go) for this package.
 
+## License
+[![License](https://img.shields.io/badge/license-Open%20BSV-brightgreen.svg?style=flat)](/LICENSE)
