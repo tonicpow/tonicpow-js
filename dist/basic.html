@@ -17,17 +17,20 @@
       // On ready taken from https://stackoverflow.com/a/7053197
       /*function r(f){/in/.test(document.readyState)?setTimeout(r,9,f):f()}
       r(async () => {
+        // Set the public key
         let tonicPow = new TonicPow({
-          advertiser_public_key: 'advertiser_public_key_cookie_xxxxxx',
+          advertiser_public_key: 'xxxxxx',
         });
-        console.log('tonicPow', tonicPow);
+
+        // Get the active session id
+        let id = await tonicPow.api.getSession();
       });*/
 
-      // Load when the document is ready
+      // Example using jQuery
       $(document).ready(function(){
 
         // Create the tonicPow class and set the advertiser_public_key
-        let tonicPow = new TonicPow({
+        let tonicSdk = new TonicPow({
           advertiser_public_key: $('#offerId').val(),
         });
 
@@ -38,13 +41,13 @@
           let d = new Date;
           d.setTime(d.getTime() + 24 * 60 * 60 * 1000);
           let id = [...Array(32)].map(i=>(~~(Math.random()*36)).toString(36)).join('')
-          document.cookie = "advertiser_public_key_cookie_"+tonicPow.options.advertiser_public_key + "=" + id + ";path=/;expires=" + d.toGMTString();
+          document.cookie = "advertiser_public_key_cookie_"+tonicSdk.options.advertiser_public_key + "=" + id + ";path=/;expires=" + d.toGMTString();
         });
 
         // Click fetch sessions (returns an active TonicPow session id if found)
         // response will be null if not found
         $('#fetchSession').click(async (e) => {
-          let id = await tonicPow.api.getSession();
+          let id = await tonicSdk.api.getSession();
           document.getElementById('activeSession').innerHTML = JSON.stringify(id);
         });
       });
@@ -74,7 +77,7 @@
     <button id="createNewSession">Create Session</button>
 
     <div class="container">
-      2) Enter a Public Offer ID (this is located on the offer page)
+      2) Enter an Offer Public GUID (this is located on the offer page)
     </div>
     <input type="text" id="offerId" value="the-offer-id"/>
 
@@ -86,7 +89,7 @@
     <pre id="activeSession" style="word-break: break-word"></pre>
 
     <div class="footer">
-      <a href="https://tonicpow.com/?affiliate=$tonicpow&af=tonicpow-js-example" target="_blank">TonicPow.com</a> |
+      <a href="https://tonicpow.com/?af=tonicpow-js-example" target="_blank">TonicPow.com</a> |
       <a href="https://github.com/TonicPow/tonicpow-js" target="_blank">Github</a>
     </div>
   </body>
