@@ -1,6 +1,6 @@
 {
   "name": "tonicpow-js",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "TonicPow Javascript SDK - https://www.tonicpow.com",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
