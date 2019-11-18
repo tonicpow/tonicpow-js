@@ -18,7 +18,7 @@ For this example we assume you have a front-end and back-end application.
 Here is an [example in Go](https://github.com/tonicpow/tonicpow-go)
 
 #### Prerequisites
-- You have a front-end application to capture the `session` from the visitor from TonicPow
+- You have a front-end application to capture the `tncpw_session` query param from the visitor from TonicPow
 - You have a back-end server to trigger the conversion (IE: [node](https://nodejs.org/en/))
 - You already created an offer from [TonicPow](https://offers.tonicpow.com/offers/new)
 - You have the `private_guid` for the offer, which is the same as the `advertiser_secret_key`
@@ -37,7 +37,7 @@ Here is an [example in Go](https://github.com/tonicpow/tonicpow-go)
 
 On any request to your back-end, pass this value across the session
 ```text
-?tonicpow_session=sessionResult
+?tncpw_session=sessionResult
 ```
 
 #### Install via npm (back-end)
@@ -110,8 +110,6 @@ tonicpow.getSession(function(result) {
     console.log('result', result);
 });
 ```
-
-
 
 
 ## Examples
