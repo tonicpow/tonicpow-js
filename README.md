@@ -1,5 +1,5 @@
-# TonicPow's [Javascript SDK](https://tncpw.co/tonicpow.js)
-Official JS implementation for interacting with the TonicPow API
+# TonicPow [JS](https://tncpw.co/tonicpow.js)
+Official JS implementation for interacting with the [TonicPow API](https://docs.tonicpow.com)
 
 ## Table of Contents
 - [Getting Started](#getting-started)
@@ -13,20 +13,20 @@ Official JS implementation for interacting with the TonicPow API
 - [License](#license)
 
 ## Getting Started
-This will cover using the TonicPow SDK to trigger a conversion. 
+This will cover using the TonicPow JS to trigger a conversion. 
 For this example we assume you have a front-end and back-end application.
-Here is an [example in Go](https://github.com/tonicpow/tonicpow-go)
+Here is an [example in Go](https://github.com/tonicpow/go-tonicpow)
 
 #### Prerequisites
 - You have a front-end application to capture the `tncpw_session` query param from the visitor from TonicPow
 - You have a back-end server to trigger the conversion (IE: [node](https://nodejs.org/en/))
-- You already created an offer from [TonicPow](https://offers.tonicpow.com/offers/new)
-- You have the `private_guid` for the offer, which is the same as the `advertiser_secret_key`
+- You already created a campaign from [TonicPow](https://offers.tonicpow.com/offers/new)
+- You have the `api_key` for the campaign or advertiser
 
 #### Install in your project (front-end)
 ```html
 <script src="https://tncpw.co/tonicpow.js"></script>
-<script language="javascript">
+<script>
     // Use the advertiser_public_key on your backend to fire `getSession`
     let tonicpow = new TonicPow({ advertiser_public_key: 'public_guid here use on front-end' });
     // Return the session of the user if there was one, otherwise it is null
@@ -63,7 +63,7 @@ $ npm test
 ```
 
 ## Documentation
-More documentation can be found on [TonicPow](https://tonicpow.com)
+More documentation can be found on [TonicPow Docs](https://docs.tonicpow.com)
 
 #### getSession()
 
@@ -128,14 +128,14 @@ await tonicpow.triggerConversion('slenrw9pe8fw4t8pjw8', 'signup');
 - Back-end for triggering conversions
 
 ## Maintainers
-[Attila](https://github.com/attilaaf?affiliate=1attila) - [Satchmo](https://github.com/rohenaz?affiliate=1satchmo) - [MrZ](https://github.com/mrz1836?affiliate=1mrz)
+[MrZ](https://github.com/mrz1836?affiliate=1mrz) - [Satchmo](https://github.com/rohenaz?affiliate=1satchmo)
                                                                                                                                                            
 Support the development of this project and the [TonicPow](https://tonicpow.com/) team 🙏
 
 ## Contributing
 Feel free to dive in! [Open an issue](https://github.com/tonicpow/tonicpow-js/issues/new) or submit PRs.
 
-There is also a [Golang implementation](https://github.com/tonicpow/tonicpow-go) for this package.
+There is also a [Golang implementation](https://github.com/tonicpow/go-tonicpow) for this package.
 
 ## License
 [![License](https://img.shields.io/badge/license-Open%20BSV-brightgreen.svg?style=flat)](/LICENSE)
