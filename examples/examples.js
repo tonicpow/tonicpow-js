@@ -24,6 +24,7 @@ let apiKey = process.env.TONICPOW_API_KEY || ''
     response = await TonicPow.loginUser("testing88577@tonicpow.com","ExamplePassForNow0!")
     console.log(response, "user session token: ", TonicPow.session.userToken)
 
+    // Example setting a user token from a cookie header
     //let testCookieHeader = `Cookie: session_token=MTU3NzUwMTU0NnxsU2RjVHlXeW1CU0YtMlhUc29XY0NqUjFVZHBnS3l6Njk0eld3bTkxeENsbVVrNzgxRi1LWDFoZUkwQWVqMlhfSEVhQmRXYzlKNU1aMkRJc2FRRGt3Zk1pTU9lSEI4ei1faHlTSmc5YVJkdTRBSFp4OTFFRWdrVmNFbnFaZjFuSGJndEtEN1g2NHZnTWg0Y1pHSmlRR1FWSzlnX3Bpb1A4U3F4WkJBX25DblN2eDlyNDhCNUJWVGM5X1BKZkVWbWZIeFJLN3FxZGhwVERTb1JGSFVVUl94a3h5MGFmaERla0tLenRlRFYzcjlNQ3JNR25ZWURUdGRJeHFKRXBrWEhlQjJfVlpHQlV1dGdWWnpjaURZalQ0Z0Mza0pyZkFsSWRhTWRFdld3bmpYMEJaQlZkblRjQ0twN1lLMXlka1d5X0RxeGQyWjZmTHVvUzU2eS0zcXViVHNRPXxkipD5K3SbLHTzjSqHMbbMkyepq7j6Ht2cqBkHsnJnHw==; name=value; name=value`
     //TonicPow.session.userToken = testCookieHeader
 
