@@ -7,7 +7,11 @@
     "type": "git",
     "url": "https://github.com/tonicpow/tonicpow-js/"
   },
-  "author": "TonicPow",
+  "author": {
+    "name": "TonicPow",
+    "email": "support@tonicpow.com",
+    "url": "https://docs.tonicpow.com"
+  },
   "license": "Open BSV",
   "bugs": {
     "url": "https://github.com/tonicpow/tonicpow-js/issues"
@@ -42,6 +46,9 @@
   "files": [
     "lib/*"
   ],
+  "bin": {
+    "tonicpow-js": "lib/api.js"
+  },
   "engines": {
     "node": "*"
   }
