@@ -9,7 +9,7 @@ let apiKey = process.env.TONICPOW_API_KEY || ''
     //
     // Example: Load TonicPow api, creates a new session
     //
-    let response = await TonicPow.Load(apiKey)
+    let response = await TonicPow.Load(apiKey,'local')
     console.log(response)
 
     //
