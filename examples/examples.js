@@ -28,7 +28,8 @@ let apiKey = process.env.TONICPOW_API_KEY || ''
     // Example: Current User (get user details)
     //
     response = await TonicPow.currentUser(TonicPow.userSessionToken)
-    console.log(response, "user session token: ", TonicPow.userSessionToken)
+    console.log(response)
+    console.log("user session token: ", TonicPow.userSessionToken)
 
 
   } catch(e){
