@@ -33,12 +33,12 @@ let urlParams = new URLSearchParams(window.location.search)
 let session = urlParams.get('tncpw_session') 
 ```
 
-**Save via Cookie Example**
+_(Optional)_ **Save via Cookie Example**
 ```javascript
 setCookie('tncpw_session', session, 60)
 ``` 
 
-**Save via Local Storage Example**
+_(Optional)_ **Save via Local Storage Example**
 ```javascript
 localStorage.setItem('tncpw_session', session);
 ```
@@ -55,7 +55,7 @@ let TonicPow = require('tonicpow-js').instance();
 TonicPow.load('your-api-key')
 ```
 
-## Installation
+## Installation (local dev)
 ```bash
 $ npm install
 $ npm test
