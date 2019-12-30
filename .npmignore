@@ -8,3 +8,4 @@ examples/
 .firebase/
 .firebaserc
 firebase.json
+todo.md
