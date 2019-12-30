@@ -19,11 +19,8 @@ if (typeof document !== 'undefined') {
 // Builds a cookie so it's sent on requests automatically
 // Stores in local storage for easy access from the application
 function captureVisitorSession(customSessionId) {
-  if (typeof window === 'undefined') {
-    return
-  }
   let sessionId = customSessionId
-  if (!customSessionId || customSessionId.length === 0) {
+  if ((!customSessionId || customSessionId.length === 0) && typeof window !== 'undefined') {
     let urlParams = new URLSearchParams(window.location.search)
     sessionId = urlParams.get(sessionName)
   }
