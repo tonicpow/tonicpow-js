@@ -47,13 +47,15 @@ More documentation can be found on [TonicPow Docs](https://docs.tonicpow.com)
 View [examples](examples/examples.js) of using the package.
 
 ## Code Standards
-- Always use the language's best practices!
+Always use the language's best practices!
 
 ## Usage
-- Back-end package for interacting with the [TonicPow API](https://docs.tonicpow.com)
+Back-end package for interacting with the [TonicPow API](https://docs.tonicpow.com)
+
+View [full demo examples](examples/examples.js) of using the package.
 
 ## Maintainers
-[MrZ](https://github.com/mrz1836?affiliate=1mrz) - [Satchmo](https://github.com/rohenaz?affiliate=1satchmo)
+[MrZ](https://github.com/mrz1836) - [Satchmo](https://github.com/rohenaz)
                                                                                                                                                            
 Support the development of this project and the [TonicPow](https://tonicpow.com/) team 🙏
 
