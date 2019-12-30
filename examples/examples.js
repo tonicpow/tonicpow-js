@@ -156,6 +156,14 @@ let apiKey = process.env.TONICPOW_API_KEY || ''
     console.log('updated title: '+goal.title)
 
     //
+    // Example: Convert a goal
+    //
+    //let sessionId = urlParams.get('tncpw_session') // From your application's front-end
+    //let sessionId = 'visitor-session-id-from-your-front-end-application'
+    //let conversion = await TonicPow.convertGoal(goal.name, sessionId, 'my custom attributes','my-app-user-id')
+    //console.log('conversion successful', conversion)
+
+    //
     // Example: Create a link
     //
     let newLink = {
@@ -177,12 +185,6 @@ let apiKey = process.env.TONICPOW_API_KEY || ''
     //
     link = await TonicPow.checkLink(link.short_code)
     console.log('link found: '+link.short_code)
-
-    /*
-    * CampaignID:      campaign.ID,
-		UserID:          user.ID,
-		CustomShortCode: fmt.Sprintf("%s%d", user.FirstName, rand.Intn(100000)),*/
-
 
   } catch(e){
     console.error(e)
