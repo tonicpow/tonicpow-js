@@ -54,7 +54,7 @@ Here as example of session tracking for [goal conversions](front_end.md)
 - Coverage for the [TonicPow.com API](https://docs.tonicpow.com/)
     - [x] Authentication
     - [x] Users
-    - [ ] Advertiser Profiles
+    - [x] Advertiser Profiles
     - [ ] Campaigns
     - [ ] Goals
     - [ ] Links

@@ -75,6 +75,31 @@ let apiKey = process.env.TONICPOW_API_KEY || ''
     user = await TonicPow.getUser(0,user.email)
     console.log('user found: '+user.email)
 
+    //
+    // Example: Create an advertiser profile
+    //
+    let newAdvertiser = {
+      user_id: user.id,
+      name: 'Acme User Advertising',
+      homepage_url:'https://tonicpow.com',
+      icon_url: 'https://tonicpow.com/images/logos/apple-touch-icon.png',
+    }
+    let advertiser = await TonicPow.createAdvertiserProfile(newAdvertiser)
+    console.log('advertiser created', advertiser)
+
+    //
+    // Example: Get an advertiser profile
+    //
+    advertiser = await TonicPow.getAdvertiserProfile(advertiser.id)
+    console.log('advertiser found: '+advertiser.name)
+
+    //
+    // Example: Update an advertiser profile
+    //
+    advertiser.name = 'Acme Advertising'
+    advertiser = await TonicPow.updateAdvertiserProfile(advertiser)
+    console.log('updated name: '+advertiser.name)
+
 
   } catch(e){
     console.error(e)
