@@ -32,7 +32,7 @@ let apiKey = process.env.TONICPOW_API_KEY || ''
     console.log(response, "user session token: ", TonicPow.session.userToken)
 
     // Example setting a user token from a cookie header (used for Cloud functions)
-    TonicPow.session.userToken = `Cookie: session_token=`+TonicPow.session.userToken+`; name=value; name=value`
+    TonicPow.session.userToken = `Cookie: session_token=`+TonicPow.session.userToken+`; another_cookie=value; third_cookie=value`
 
     //
     // Example: Current User (get user details)
