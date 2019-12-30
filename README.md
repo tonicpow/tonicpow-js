@@ -57,7 +57,7 @@ Here as example of session tracking for [goal conversions](front_end.md)
     - [x] Advertiser Profiles
     - [x] Campaigns
     - [x] Goals
-    - [ ] Links
+    - [x] Links
 
 ## Examples
 View [examples](examples/examples.js) of using the package.

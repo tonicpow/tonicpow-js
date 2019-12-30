@@ -155,6 +155,34 @@ let apiKey = process.env.TONICPOW_API_KEY || ''
     goal = await TonicPow.updateGoal(goal)
     console.log('updated title: '+goal.title)
 
+    //
+    // Example: Create a link
+    //
+    let newLink = {
+      campaign_id: campaign.id,
+      user_id: user.id,
+      // custom_short_code: user.first_name + user.id + campaign.id,
+    }
+    let link = await TonicPow.createLink(newLink)
+    console.log('link created', link.short_code)
+
+    //
+    // Example: Get a link
+    //
+    link = await TonicPow.getLink(link.id)
+    console.log('link found: '+link.short_code)
+
+    //
+    // Example: Check a link
+    //
+    link = await TonicPow.checkLink(link.short_code)
+    console.log('link found: '+link.short_code)
+
+    /*
+    * CampaignID:      campaign.ID,
+		UserID:          user.ID,
+		CustomShortCode: fmt.Sprintf("%s%d", user.FirstName, rand.Intn(100000)),*/
+
 
   } catch(e){
     console.error(e)
