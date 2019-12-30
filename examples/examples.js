@@ -37,9 +37,24 @@ let apiKey = process.env.TONICPOW_API_KEY || ''
     //
     // Example: Current User (get user details)
     //
-    response = await TonicPow.currentUser(TonicPow.session.userToken)
-    console.log(response)
-    console.log("user session token: ", TonicPow.session.userToken)
+    let user = await TonicPow.currentUser(TonicPow.session.userToken)
+    console.log(user)
+
+    //
+    // Example: Update & get the users balance
+    //
+    user = await TonicPow.getUserBalance(user.id)
+    if (user.balance){
+      console.log("balance found")
+    } else {
+      console.log("balance is empty")
+    }
+
+    //
+    // Example: Get a user
+    //
+    user = await TonicPow.getUser(0,user.email)
+    console.log("user found: "+user.email)
 
 
   } catch(e){
