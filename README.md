@@ -1,6 +1,12 @@
 # TonicPow JS
 Official JS implementation for interacting with the [TonicPow API](https://docs.tonicpow.com)
 
+[![last commit](https://img.shields.io/github/last-commit/tonicpow/tonicpow-js.svg?style=flat)](https://github.com/tonicpow/tonicpow-js/commits/master)
+[![license](https://img.shields.io/badge/license-Open%20BSV-brightgreen.svg?style=flat)](/LICENSE)
+[![Release](https://img.shields.io/github/release-pre/tonicpow/tonicpow-js.svg?style=flat)](https://github.com/tonicpow/tonicpow-js/releases)
+[![standard-readme compliant](https://img.shields.io/badge/standard--readme-OK-green.svg?style=flat)](https://github.com/RichardLitt/standard-readme)
+[![slack](https://img.shields.io/badge/slack-tonicpow-orange.svg?style=flat)](https://atlantistic.slack.com/app_redirect?channel=tonicpow)
+
 ## Table of Contents
 - [Getting Started](#getting-started)
 - [Installation](#installation)
@@ -20,10 +26,28 @@ If you are familiar with Go, here's an [example in Go](https://github.com/tonicp
 #### Prerequisites
 - You have a front-end application to capture the `tncpw_session` query param from the visitor from TonicPow
 - You have a back-end server to trigger the conversion (IE: [node](https://nodejs.org/en/))
-- You already created a campaign from [TonicPow](https://offers.tonicpow.com/offers/new)
-- You have the `api_key` for the campaign or advertiser
+- You already created a campaign and goal on [TonicPow](https://offers.tonicpow.com/offers/new)
+- You have a TonicPow `api_key`
 
-#### Setup your project (front-end)
+#### Install via npm (back-end)
+```bash
+$ npm install tonicpow-js --save
+``` 
+
+And load the module in your code:
+```javascript 
+let TonicPow = require('tonicpow-js');
+await TonicPow.init('your-api-key', 'live')
+```
+
+View [more examples](examples/examples.js) of using the package.
+
+## Installation (local dev)
+```bash
+$ npm install
+```    
+
+#### Setup your project (front-end) (converting goals)
 All requests to web applications have the parameter `?tncpw_session=user-session-id` set.
 You can use your own implementation for storing the `tncpw_session` and sending it to your back-end.
 
@@ -43,29 +67,11 @@ _(Optional)_ **Save via Local Storage Example**
 localStorage.setItem('tncpw_session', session);
 ```
 
-
-#### Install via npm (back-end)
-```bash
-$ npm install tonicpow-js --save
-``` 
-
-And load the module in your code:
-```javascript 
-let TonicPow = require('tonicpow-js').instance();
-TonicPow.load('your-api-key')
-```
-
-## Installation (local dev)
-```bash
-$ npm install
-$ npm test
-```
-
 ## Documentation
 More documentation can be found on [TonicPow Docs](https://docs.tonicpow.com)
 
 ## Examples
-- todo: @mrz
+View [examples](examples/examples.js) of using the package.
 
 ## Code Standards
 - Always use the language's best practices!
