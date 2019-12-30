@@ -26,6 +26,12 @@ let apiKey = process.env.TONICPOW_API_KEY || ''
     console.log(response)
 
     //
+    // Example: End a session (optional)
+    //
+    //response = await TonicPow.endSession()
+    //console.log(response)
+
+    //
     // Example: Login (as a user)
     //
     response = await TonicPow.loginUser("testing88577@tonicpow.com","ExamplePassForNow0!")
@@ -43,12 +49,12 @@ let apiKey = process.env.TONICPOW_API_KEY || ''
     //
     // Example: Update & get the users balance
     //
-    user = await TonicPow.getUserBalance(user.id)
+    /*user = await TonicPow.getUserBalance(user.id)
     if (user.balance){
       console.log("balance found")
     } else {
       console.log("balance is empty")
-    }
+    }*/
 
     //
     // Example: Get a user
