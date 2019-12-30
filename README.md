@@ -50,6 +50,7 @@ Here as example of session tracking for [goal conversions](front_end.md)
 - Supports both pure API token context and user token context (run your own site)
 - Automatically handles cookies and updating session tokens
 - Set tokens using [cookie headers](examples/examples.js), automatically parses cookie values
+- Use our [front_end.js](examples/front_end.js) for capturing a visitor session (goal conversions)
 - Coverage for the [TonicPow.com API](https://docs.tonicpow.com/)
     - [x] [Authentication](https://docs.tonicpow.com/#632ed94a-3afd-4323-af91-bdf307a399d2)
     - [x] [Users](https://docs.tonicpow.com/#50b3c130-7254-4a05-b312-b14647736e38)

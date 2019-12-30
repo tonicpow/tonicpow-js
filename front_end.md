@@ -3,6 +3,8 @@ All requests to web applications have the parameter `?tncpw_session=user-session
 You can use your own implementation for storing the `tncpw_session` and sending it to your back-end application. 
 [Goal conversions](https://docs.tonicpow.com/#caeffdd5-eaad-4fc8-ac01-8288b50e8e27) require the user's `tncpw_session`
 
+Here is [an example](examples/front_end.js) using some vanilla js for capturing the session.
+
 **Capture The Session**
 ```javascript
 let urlParams = new URLSearchParams(window.location.search)
