@@ -46,6 +46,19 @@ More overall API documentation can be found on [TonicPow Docs](https://docs.toni
 
 Here as example of session tracking for [goal conversions](front_end.md)
 
+### Features
+- [Config & Session](lib/api.js) are completely configurable
+- Supports both pure API token context and user token context (run your own site)
+- Automatically handles cookies and updating session tokens
+- Set tokens using cookie headers, automatically parses cookie values
+- Coverage for the [TonicPow.com API](https://docs.tonicpow.com/)
+    - [x] Authentication
+    - [x] Users
+    - [ ] Advertiser Profiles
+    - [ ] Campaigns
+    - [ ] Goals
+    - [ ] Links
+
 ## Examples
 View [examples](examples/examples.js) of using the package.
 

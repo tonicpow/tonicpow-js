@@ -34,14 +34,14 @@ let apiKey = process.env.TONICPOW_API_KEY || ''
     //
     // Example: Create a new user
     //
-    //response = await TonicPow.createUser({email:"test123@tonicpow.com"})
+    //response = await TonicPow.createUser({email:'test123@tonicpow.com'})
     //console.log(response)
 
     //
     // Example: Login (as a user)
     //
-    response = await TonicPow.loginUser("testing88577@tonicpow.com","ExamplePassForNow0!")
-    console.log(response, "user session token: ", TonicPow.session.userToken)
+    response = await TonicPow.loginUser('testing88577@tonicpow.com','ExamplePassForNow0!')
+    console.log(response, 'user session token: ', TonicPow.session.userToken)
 
     // Example setting a user token from a cookie header (used for Cloud functions)
     TonicPow.session.userToken = `Cookie: session_token=`+TonicPow.session.userToken+`; another_cookie=value; third_cookie=value`
@@ -53,20 +53,27 @@ let apiKey = process.env.TONICPOW_API_KEY || ''
     console.log(user)
 
     //
+    // Example: Update a user
+    //
+    user.first_name = 'Jack'
+    user = await TonicPow.updateUser(user)
+    console.log(user.first_name)
+
+    //
     // Example: Update & get the users balance
     //
     /*user = await TonicPow.getUserBalance(user.id)
     if (user.balance){
-      console.log("balance found")
+      console.log('balance found')
     } else {
-      console.log("balance is empty")
+      console.log('balance is empty')
     }*/
 
     //
     // Example: Get a user
     //
     user = await TonicPow.getUser(0,user.email)
-    console.log("user found: "+user.email)
+    console.log('user found: '+user.email)
 
 
   } catch(e){
