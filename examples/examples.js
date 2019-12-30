@@ -100,6 +100,61 @@ let apiKey = process.env.TONICPOW_API_KEY || ''
     advertiser = await TonicPow.updateAdvertiserProfile(advertiser)
     console.log('updated name: '+advertiser.name)
 
+    //
+    // Example: Create a campaign
+    //
+    let newCampaign = {
+      advertiser_profile_id: advertiser.id,
+      currency: 'usd',
+      description: 'Earn BSV for sharing things you like.',
+      image_url: 'https://i.imgur.com/TbRFiaR.png',
+      pay_per_click_rate: 0.01,
+      target_url: 'https://offers.tonicpow.com',
+      title: 'TonicPow Offers',
+    }
+    let campaign = await TonicPow.createCampaign(newCampaign)
+    console.log('campaign created', campaign)
+
+    //
+    // Example: Get a campaign
+    //
+    campaign = await TonicPow.getCampaign(campaign.id)
+    console.log('campaign found: '+campaign.title)
+
+    //
+    // Example: Update a campaign
+    //
+    campaign.title = 'TonicPow Offers Campaign'
+    campaign = await TonicPow.updateCampaign(campaign)
+    console.log('updated title: '+campaign.title)
+
+    //
+    // Example: Create a goal
+    //
+    let newGoal = {
+      campaign_id: campaign.id,
+      description: 'Bring leads and get paid!',
+      name: 'new-lead-landing-page',
+      payout_rate: 0.50,
+      payout_type: 'flat',
+      title: 'Landing Page Leads'
+    }
+    let goal = await TonicPow.createGoal(newGoal)
+    console.log('goal created', goal)
+
+    //
+    // Example: Get a goal
+    //
+    goal = await TonicPow.getGoal(goal.id)
+    console.log('goal found: '+goal.title)
+
+    //
+    // Example: Update a goal
+    //
+    goal.title = 'Landing Page Leads Goal'
+    goal = await TonicPow.updateGoal(goal)
+    console.log('updated title: '+goal.title)
+
 
   } catch(e){
     console.error(e)

@@ -55,8 +55,8 @@ Here as example of session tracking for [goal conversions](front_end.md)
     - [x] Authentication
     - [x] Users
     - [x] Advertiser Profiles
-    - [ ] Campaigns
-    - [ ] Goals
+    - [x] Campaigns
+    - [x] Goals
     - [ ] Links
 
 ## Examples
