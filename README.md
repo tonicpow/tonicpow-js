@@ -41,7 +41,9 @@ await TonicPow.init('your-api-key', 'live')
 View [examples](examples/examples.js) of using the package.    
 
 ## Documentation
-More documentation can be found on [TonicPow Docs](https://docs.tonicpow.com)
+More overall API documentation can be found on [TonicPow Docs](https://docs.tonicpow.com)
+
+Here as example of session tracking for [goal conversions](front_end.md)
 
 ## Examples
 View [examples](examples/examples.js) of using the package.
