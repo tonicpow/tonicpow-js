@@ -1,22 +1,23 @@
 {
   "name": "tonicpow-js",
-  "version": "0.0.1",
-  "description": "TonicPow Javascript SDK - https://www.tonicpow.com",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
-  "scripts": {
-    "build": "tsc && gulp",
-    "test": "mocha --reporter spec",
-    "prepare": "npm run build"
-  },
+  "version": "0.1.0",
+  "description": "TonicPow API Library in JS - https://docs.tonicpow.com",
+  "main": "lib/api.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/tonicpow/tonicpow/"
+    "url": "https://github.com/tonicpow/tonicpow-js/"
   },
-  "author": "TonicPow.com",
+  "author": {
+    "name": "TonicPow",
+    "email": "support@tonicpow.com",
+    "url": "https://docs.tonicpow.com"
+  },
   "license": "Open BSV",
   "bugs": {
-    "url": "https://github.com/TonicPow/tonicpow-js/issues"
+    "url": "https://github.com/tonicpow/tonicpow-js/issues"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "contributors": [
     {
@@ -26,59 +27,29 @@
     {
       "name": "MrZ",
       "url": "https://github.com/mrz1836/"
-    },
-    {
-      "name": "Attila",
-      "url": "https://github.com/attilaaf/"
     }
   ],
   "keywords": [
     "tonic",
     "tonicpow",
     "tonic pow",
-    "offers",
     "bitcoin",
     "bsv"
   ],
-  "homepage": "https://github.com/TonicPow/tonicpow-js",
-  "devDependencies": {
-    "@babel/cli": "^7.6.4",
-    "@babel/core": "^7.6.4",
-    "@babel/plugin-transform-arrow-functions": "^7.0.0",
-    "@babel/preset-env": "^7.6.3",
-    "babelify": "^10.0.0",
-    "browserify": "^16.2.3",
-    "browserify-shim": "^3.8.14",
-    "chai": "^4.2.0",
-    "gulp": "^4.0.2",
-    "gulp-batch": "^1.0.5",
-    "gulp-clean-css": "^4.2.0",
-    "gulp-clone": "^2.0.1",
-    "gulp-concat": "^2.6.1",
-    "gulp-concat-css": "^3.1.0",
-    "gulp-cssimport": "^7.0.0",
-    "gulp-header": "^2.0.9",
-    "gulp-htmlmin": "^5.0.1",
-    "gulp-less": "^4.0.1",
-    "gulp-livereload": "^4.0.2",
-    "gulp-sass": "^4.0.2",
-    "gulp-sourcemaps": "^2.6.5",
-    "gulp-typescript": "^5.0.1",
-    "gulp-uglify": "^3.0.2",
-    "gulp-uglify-es": "^1.0.4",
-    "gulp-watch": "^5.0.1",
-    "mocha": "^6.2.1",
-    "streamqueue": "^1.1.2",
-    "tsify": "^4.0.1",
-    "typescript": "^3.6.4",
-    "vinyl-buffer": "^1.0.1",
-    "vinyl-source-stream": "^2.0.0"
-  },
+  "homepage": "https://github.com/tonicpow/tonicpow-js",
+  "devDependencies": {},
   "dependencies": {
     "axios": "^0.19.0",
-    "js-cookie": "^2.2.1"
+    "axios-cookiejar-support": "^0.5.1",
+    "tough-cookie": "^3.0.1"
   },
   "files": [
-    "dist/*"
-  ]
+    "lib/*"
+  ],
+  "bin": {
+    "tonicpow-js": "lib/api.js"
+  },
+  "engines": {
+    "node": "*"
+  }
 }
