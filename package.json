@@ -17,6 +17,7 @@
     "url": "https://github.com/tonicpow/tonicpow-js/issues"
   },
   "scripts": {
+    "lint": "cd lib && standard --fix || true",
     "test": "mocha"
   },
   "contributors": [
