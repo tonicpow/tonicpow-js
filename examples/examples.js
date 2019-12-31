@@ -186,6 +186,13 @@ let apiKey = process.env.TONICPOW_API_KEY || ''
     link = await TonicPow.checkLink(link.short_code)
     console.log('link found: '+link.short_code)
 
+    //
+    // Example: List of campaigns
+    //
+    let campaigns = await TonicPow.listCampaigns()
+    //console.log(campaigns)
+    console.log('campaigns found: '+campaigns.length)
+
   } catch(e){
     console.error(e)
   }
