@@ -46,7 +46,7 @@ let apiKey = process.env.TONICPOW_API_KEY || ''
     //
     response = await TonicPow.loginUser('testing88577@tonicpow.com','ExamplePassForNow0!')
     console.log(response)
-    //console.log('user session token: ', TonicPow.session.userToken)
+    console.log('user session token: ', TonicPow.session.userCookie)
 
     //
     // Example: Setting a user token from a cookie header (used for Cloud functions)
