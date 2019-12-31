@@ -13,13 +13,13 @@ let apiKey = process.env.TONICPOW_API_KEY || ''
     //
     // Example: Load TonicPow api, creates a new session
     //
-    let response = await TonicPow.init(apiKey,TonicPow.config.environments.Local)
+    let response = await TonicPow.init(apiKey,{environment: TonicPow.config.environments.Local, domain: 'tonicpow.com'})
     console.log(response)
 
     //
     // Example: Load TonicPow api with existing session token (cloud functions)
     //
-    //let response = await TonicPow.init(apiKey, TonicPow.config.environments.Local, customApiToken)
+    //let response = await TonicPow.init(apiKey, {environment: TonicPow.config.environments.Local, domain: 'tonicpow.com', token: customApiToken})
     //console.log(response)
     //console.log(TonicPow.session.apiToken)
 
@@ -58,6 +58,11 @@ let apiKey = process.env.TONICPOW_API_KEY || ''
     //
     let user = await TonicPow.currentUser()
     console.log(user)
+
+    //
+    // Example: Getting a user's cookie
+    //
+    console.log(TonicPow.session.userCookie)
 
     //
     // Example: Update a user
