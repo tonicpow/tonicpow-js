@@ -1,5 +1,6 @@
-# TonicPow JS
-Official JS implementation for interacting with the [TonicPow API](https://docs.tonicpow.com)
+<img src="https://repository-images.githubusercontent.com/206254434/c6255400-2b4e-11ea-82f0-b8c4c7ce96a1" alt="TonicPow JS">
+
+**TonicPow JS** is the official JS implementation for interacting with the [TonicPow API](https://docs.tonicpow.com)
 
 [![last commit](https://img.shields.io/github/last-commit/tonicpow/tonicpow-js.svg?style=flat)](https://github.com/tonicpow/tonicpow-js/commits/master)
 [![Release](https://img.shields.io/github/release-pre/tonicpow/tonicpow-js.svg?style=flat)](https://github.com/tonicpow/tonicpow-js/releases)
