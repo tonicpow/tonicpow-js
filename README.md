@@ -9,7 +9,7 @@ Official JS implementation for interacting with the [TonicPow API](https://docs.
 
 ## Table of Contents
 - [Getting Started](#getting-started)
-- [Installation](#install-via-npm-back-end)
+- [Installation](#install-via-npm)
 - [Documentation](#documentation)
 - [Examples](#examples)
 - [Code Standards](#code-standards)
@@ -26,7 +26,7 @@ Familiar with Go? Here's an [example in Go](https://github.com/tonicpow/go-tonic
 - You have a [TonicPow _api_key_](https://docs.tonicpow.com)
 - You have a back-end server (IE: [Node](https://nodejs.org/en/), [Go](https://golang.org/), [Firebase Functions](https://firebase.google.com/docs/functions))
 
-## Install via npm (back-end)
+## Install via npm
 From your project's directory:
 ```bash
 $ npm install tonicpow-js --save
@@ -35,30 +35,12 @@ $ npm install tonicpow-js --save
 And load the module in your project:
 ```javascript 
 let TonicPow = require('tonicpow-js');
-await TonicPow.init('your-api-key', 'live')
+await TonicPow.init('your-api-key')
 ``` 
 
-View [examples](examples/examples.js) of using the package. 
-
-
-#### Local Development
-_(Optional)_ Run tests (requires `api_key` env var)
-```bash
-$ npm test
-```  
-
-_(Optional)_ Lint & Build
-```bash
-$ npm run lint && npm run build
-```
-   
-
-## Documentation
-More overall API documentation can be found on [TonicPow Docs](https://docs.tonicpow.com)
-
-Here as example of session tracking for [goal conversions](front_end.md)
-
-### Features
+View [examples](examples/examples.js) of using this package.
+ 
+#### Features
 - [Config & Session](lib/api.js) are completely configurable
 - Supports both pure API token context and user token context (run your own site)
 - Automatically handles cookies and updating session tokens
@@ -71,6 +53,12 @@ Here as example of session tracking for [goal conversions](front_end.md)
     - [x] [Campaigns](https://docs.tonicpow.com/#5aca2fc7-b3c8-445b-aa88-f62a681f8e0c)
     - [x] [Goals](https://docs.tonicpow.com/#316b77ab-4900-4f3d-96a7-e67c00af10ca)
     - [x] [Links](https://docs.tonicpow.com/#ee74c3ce-b4df-4d57-abf2-ccf3a80e4e1e)
+
+## Documentation
+This is a JavaScript library for the [TonicPow API](https://docs.tonicpow.com). All methods and models are described in [this documentation](https://docs.tonicpow.com).
+
+#### Visitor Sessions (front-end) _(optional)_
+Here is the [documentation for visitor sessions](front_end.md) for converting goals.
 
 ## Examples
 View [examples](examples/examples.js) of using the package.
