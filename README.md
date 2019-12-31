@@ -1,6 +1,6 @@
-<img src="https://repository-images.githubusercontent.com/206254434/c6255400-2b4e-11ea-82f0-b8c4c7ce96a1" height="250" alt="TonicPow JS">
+<img src=".github/IMAGES/tonicpow-js.png" height="250" alt="TonicPow JS">
 
-**TonicPow JS** is the official JS implementation for interacting with the [TonicPow API](https://docs.tonicpow.com)
+**TonicPow JS** is the official JavaScript implementation for interacting with the [TonicPow API](https://docs.tonicpow.com)
 
 [![last commit](https://img.shields.io/github/last-commit/tonicpow/tonicpow-js.svg?style=flat)](https://github.com/tonicpow/tonicpow-js/commits/master)
 [![Release](https://img.shields.io/github/release-pre/tonicpow/tonicpow-js.svg?style=flat)](https://github.com/tonicpow/tonicpow-js/releases)
@@ -72,6 +72,8 @@ Back-end package for interacting with the [TonicPow API](https://docs.tonicpow.c
 
 View [full demo examples](examples/examples.js) of using the package.
 
+There is also a [Golang implementation](https://github.com/tonicpow/go-tonicpow) for this package.
+
 ## Maintainers
 | [<img src="https://github.com/mrz1836.png" height="50" alt="MrZ" />](https://github.com/mrz1836) | [<img src="https://github.com/rohenaz.png" height="50" alt="Satchmo" />](https://github.com/rohenaz) | [<img src="https://github.com/attilaaf.png" height="50" alt="Atilla" />](https://github.com/attilaaf) |
 |:---:|:---:|:---:|
@@ -81,8 +83,6 @@ Support the development of this project and the [TonicPow](https://tonicpow.com/
 
 ## Contributing
 Feel free to dive in! [Open an issue](https://github.com/tonicpow/tonicpow-js/issues/new) or submit PRs.
-
-There is also a [Golang implementation](https://github.com/tonicpow/go-tonicpow) for this package.
 
 ## License
 [![License](https://img.shields.io/badge/license-Open%20BSV-brightgreen.svg?style=flat)](/LICENSE)
