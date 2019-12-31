@@ -23,7 +23,7 @@ This is a JavaScript library that has complete coverage for the [TonicPow API](h
 Familiar with Go? Here's an [example in Go](https://github.com/tonicpow/go-tonicpow).
 
 #### Prerequisites
-- You have a [TonicPow `api_key`](https://docs.tonicpow.com)
+- You have a [TonicPow _api_key_](https://docs.tonicpow.com)
 - You have a back-end server (IE: [Node](https://nodejs.org/en/), [Go](https://golang.org/), [Firebase Functions](https://firebase.google.com/docs/functions))
 
 ## Install via npm (back-end)
@@ -36,9 +36,22 @@ And load the module in your project:
 ```javascript 
 let TonicPow = require('tonicpow-js');
 await TonicPow.init('your-api-key', 'live')
-```
+``` 
 
-View [examples](examples/examples.js) of using the package.    
+View [examples](examples/examples.js) of using the package. 
+
+
+#### Local Development
+_(Optional)_ Run tests (requires `api_key` env var)
+```bash
+$ npm test
+```  
+
+_(Optional)_ Lint & Build
+```bash
+$ npm run lint && npm run build
+```
+   
 
 ## Documentation
 More overall API documentation can be found on [TonicPow Docs](https://docs.tonicpow.com)
