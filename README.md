@@ -73,7 +73,9 @@ Back-end package for interacting with the [TonicPow API](https://docs.tonicpow.c
 View [full demo examples](examples/examples.js) of using the package.
 
 ## Maintainers
-[MrZ](https://github.com/mrz1836) - [Satchmo](https://github.com/rohenaz)
+| [<img src="https://github.com/mrz1836.png" height="50" alt="MrZ" />](https://github.com/mrz1836) | [<img src="https://github.com/rohenaz.png" height="50" alt="Satchmo" />](https://github.com/rohenaz) | [<img src="https://github.com/attilaaf.png" height="50" alt="Atilla" />](https://github.com/attilaaf) |
+|:---:|:---:|:---:|
+| [MrZ](https://github.com/mrz1836) | [Satchmo](https://github.com/rohenaz) | [Atilla](https://github.com/attilaaf) |
                                                                                                                                                            
 Support the development of this project and the [TonicPow](https://tonicpow.com/) team 🙏
 
