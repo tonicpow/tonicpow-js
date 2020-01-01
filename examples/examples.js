@@ -11,9 +11,23 @@ let apiKey = process.env.TONICPOW_API_KEY || ''
     //let customApiToken = 'MTU3NzY2NTYyOXxTTGJtSEphWE15dC1DRUhRSzdrekJlYjVVVjM1bURPeTU4ckhsc2p2TjBnUnV0OGJ5NTNEVlhrdExzdmpPY2ZJRGZqMGVra0FjZE00S2NPTkk3WkgwZUc1MkNqanBiOTJ0Si1aN1BxTHE0Z3dYN0ZNLUtxT2VJYjlyRTZsdGd0UUI4NGdscVNSUEZQSnF4QlNxWi1LaUJzaEJkZGVMUkdhX09pN1NUVDQ5Y3hZeWlTV0haaTJDTmJuemUxVV9WU0N2bmNsUTkxNjNreUNOVmsyYTZlNVB3cGEtM3FFamlScHJNQTItZzA3YmpvdGtIQ19IcExIT3RCUEZyREp4SEIxSWZDRUhOUzhTOGxXQTdqRG83Qzh0LWZfRGwtTGJMM2pnUmtlUXZhVjJLWVBFeFVnb2hNNFlicnBqTkx2UnNkWEVnOVFWRWRjVUkxVjRPMXg3LUNaSXVoMHlySUlSWUZafLaGOta8msbLJKJmszMBw2CFTdE_92uG0UZuwQalP70Y'
 
     //
+    // Example: All Options  (these are all optional, use as needed) (example for Firebase Cloud Functions)
+    //
+    let allOptions = {
+      environment: TonicPow.config.environments.Local,
+      cookieDomain: 'tonicpow.com',
+      cookieName: '__session',
+      maxAge: 173800,
+      httpOnly: true,
+      secureCookie: true,
+      //token: customApiToken,
+    }
+
+    //
     // Example: Load TonicPow api, creates a new session
     //
-    let response = await TonicPow.init(apiKey,{environment: TonicPow.config.environments.Local, domain: 'tonicpow.com', cookieName: '__session'})
+    //let response = await TonicPow.init(apiKey)
+    let response = await TonicPow.init(apiKey, allOptions)
     console.log(response)
 
     //
