@@ -13,7 +13,7 @@ let apiKey = process.env.TONICPOW_API_KEY || ''
     //
     // Example: Load TonicPow api, creates a new session
     //
-    let response = await TonicPow.init(apiKey,{environment: TonicPow.config.environments.Local, domain: 'tonicpow.com'})
+    let response = await TonicPow.init(apiKey,{environment: TonicPow.config.environments.Local, domain: 'tonicpow.com', cookieName: '__session'})
     console.log(response)
 
     //
