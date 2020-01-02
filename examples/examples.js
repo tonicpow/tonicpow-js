@@ -58,7 +58,7 @@ let apiKey = process.env.TONICPOW_API_KEY || ''
     //
     // Example: Login (as a user)
     //
-    response = await TonicPow.loginUser('testing88577@tonicpow.com','ExamplePassForNow0!')
+    response = await TonicPow.loginUser('testing53417@tonicpow.com','ExamplePassForNow0!')
     console.log(response)
     console.log('user session token: ', TonicPow.session.userCookie)
 
@@ -101,6 +101,11 @@ let apiKey = process.env.TONICPOW_API_KEY || ''
     //
     user = await TonicPow.getUser(0,user.email)
     console.log('user found: '+user.email)
+
+    //
+    // Example: Activate a user
+    //
+    //await TonicPow.activateUser(user.id)
 
     //
     // Example: Create an advertiser profile
