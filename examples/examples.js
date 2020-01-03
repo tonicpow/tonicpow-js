@@ -52,13 +52,16 @@ let apiKey = process.env.TONICPOW_API_KEY || ''
     //
     // Example: Create a new user
     //
-    //response = await TonicPow.createUser({email:'test123@tonicpow.com'})
-    //console.log(response)
+    let someRandomNumber = Math.floor(100000 + Math.random() * 900000)
+    let someEmailAddress = 'test+' + someRandomNumber + '@tonicpow.com'
+    let someTemporaryPassword = 'ExamplePassForNow' + Math.floor(100000 + Math.random() * 900000)
+    let user = await TonicPow.createUser({email:someEmailAddress, password: someTemporaryPassword})
+    console.log("user created: " + someEmailAddress)
 
     //
-    // Example: Login (as a user)
+    // Example: Login (as a user) (creates a user session/token)
     //
-    response = await TonicPow.loginUser('testing53417@tonicpow.com','ExamplePassForNow0!')
+    response = await TonicPow.loginUser(someEmailAddress, someTemporaryPassword)
     console.log(response)
     console.log('user session token: ', TonicPow.session.userCookie)
 
@@ -71,7 +74,7 @@ let apiKey = process.env.TONICPOW_API_KEY || ''
     //
     // Example: Current User (get user details)
     //
-    let user = await TonicPow.currentUser(cookieHeader)
+    user = await TonicPow.currentUser(cookieHeader)
     console.log(user)
 
     //
@@ -188,11 +191,17 @@ let apiKey = process.env.TONICPOW_API_KEY || ''
     console.log('updated title: '+goal.title)
 
     //
-    // Example: Convert a goal
+    // Example: Convert a goal (by session)
     //
     //let sessionId = urlParams.get('tncpw_session') // From your application's front-end
-    //let sessionId = 'visitor-session-id-from-your-front-end-application'
-    //let conversion = await TonicPow.convertGoal(goal.name, sessionId, 'my custom attributes','my-app-user-id')
+    //let conversion = await TonicPow.convertGoalWithVisitorSession(goal.id, sessionId, 'my custom attributes')
+    //console.log('conversion successful', conversion)
+
+    //
+    // Example: Convert a goal (by user)
+    //
+    //let sessionId = urlParams.get('tncpw_session') // From your application's front-end
+    //let conversion = await TonicPow.convertGoalWithUserId(goal.id, user.id, 'my custom attributes')
     //console.log('conversion successful', conversion)
 
     //
