@@ -113,13 +113,13 @@ let apiKey = process.env.TONICPOW_API_KEY || ''
     //
     // Example: Create an advertiser profile
     //
-    let newAdvertiser = {
+    let advertiser = {
       user_id: user.id,
       name: 'Acme User Advertising',
       homepage_url:'https://tonicpow.com',
       icon_url: 'https://tonicpow.com/images/logos/apple-touch-icon.png',
     }
-    let advertiser = await TonicPow.createAdvertiserProfile(newAdvertiser)
+    advertiser = await TonicPow.createAdvertiserProfile(advertiser)
     console.log('advertiser created', advertiser)
 
     //
@@ -138,7 +138,7 @@ let apiKey = process.env.TONICPOW_API_KEY || ''
     //
     // Example: Create a campaign
     //
-    let newCampaign = {
+    let campaign = {
       advertiser_profile_id: advertiser.id,
       currency: 'usd',
       description: 'Earn BSV for sharing things you like.',
@@ -147,7 +147,7 @@ let apiKey = process.env.TONICPOW_API_KEY || ''
       target_url: 'https://offers.tonicpow.com',
       title: 'TonicPow Offers',
     }
-    let campaign = await TonicPow.createCampaign(newCampaign)
+    campaign = await TonicPow.createCampaign(campaign)
     console.log('campaign created', campaign)
 
     //
@@ -166,7 +166,7 @@ let apiKey = process.env.TONICPOW_API_KEY || ''
     //
     // Example: Create a goal
     //
-    let newGoal = {
+    let goal = {
       campaign_id: campaign.id,
       description: 'Bring leads and get paid!',
       name: 'new-lead-landing-page',
@@ -174,7 +174,7 @@ let apiKey = process.env.TONICPOW_API_KEY || ''
       payout_type: 'flat',
       title: 'Landing Page Leads'
     }
-    let goal = await TonicPow.createGoal(newGoal)
+    goal = await TonicPow.createGoal(goal)
     console.log('goal created', goal)
 
     //
@@ -207,25 +207,25 @@ let apiKey = process.env.TONICPOW_API_KEY || ''
     //
     // Example: Create a link
     //
-    let newLink = {
+    let link = {
       campaign_id: campaign.id,
       user_id: user.id,
       // custom_short_code: user.first_name + user.id + campaign.id,
     }
-    let link = await TonicPow.createLink(newLink)
+    link = await TonicPow.createLink(link)
     console.log('link created', link.short_code)
 
     //
     // Example: Get a link
     //
     link = await TonicPow.getLink(link.id)
-    console.log('link found: '+link.short_code)
+    console.log('link found by id: '+link.id)
 
     //
     // Example: Check a link
     //
     link = await TonicPow.checkLink(link.short_code)
-    console.log('link found: '+link.short_code)
+    console.log('link found by code: '+link.short_code)
 
     //
     // Example: List of campaigns
@@ -233,6 +233,22 @@ let apiKey = process.env.TONICPOW_API_KEY || ''
     let campaigns = await TonicPow.listCampaigns()
     //console.log(campaigns)
     console.log('campaigns found: '+campaigns.length)
+
+    //
+    // Example: Create a Visitor Session
+    //
+    let visitorSession = {
+      link_id: link.id,
+      additional_data: "any custom data attributes",
+    }
+    visitorSession = await TonicPow.createVisitorSession(visitorSession)
+    console.log('session created', visitorSession.tncpw_session)
+
+    //
+    // Example: Get a Visitor Session
+    //
+    visitorSession = await TonicPow.getVisitorSession(visitorSession.tncpw_session)
+    console.log('session found: '+visitorSession.tncpw_session)
 
   } catch(e){
     console.error(e)
