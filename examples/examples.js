@@ -194,14 +194,15 @@ let apiKey = process.env.TONICPOW_API_KEY || ''
     // Example: Convert a goal (by session)
     //
     //let sessionId = urlParams.get('tncpw_session') // From your application's front-end
-    //let conversion = await TonicPow.convertGoalWithVisitorSession(goal.id, sessionId, 'my custom attributes')
+    //let conversion = await TonicPow.convertGoalByID(goal.id, sessionId, 'my custom attributes')
+    //let conversion = await TonicPow.convertGoalByName(goal.name, sessionId, 'my custom attributes')
     //console.log('conversion successful', conversion)
 
     //
     // Example: Convert a goal (by user)
     //
     //let sessionId = urlParams.get('tncpw_session') // From your application's front-end
-    //let conversion = await TonicPow.convertGoalWithUserId(goal.id, user.id, 'my custom attributes')
+    //let conversion = await TonicPow.convertGoalByUserID(goal.id, user.id, 'my custom attributes')
     //console.log('conversion successful', conversion)
 
     //
