@@ -138,6 +138,8 @@ let apiKey = process.env.TONICPOW_API_KEY || ''
     //
     // Example: Create a campaign
     //
+    const date = new Date()
+    date.setDate(date.getDate() + 30)
     let campaign = {
       advertiser_profile_id: advertiser.id,
       currency: 'usd',
@@ -146,6 +148,7 @@ let apiKey = process.env.TONICPOW_API_KEY || ''
       pay_per_click_rate: 0.01,
       target_url: 'https://offers.tonicpow.com',
       title: 'TonicPow Offers',
+      expires_at: date.toISOString(), // Optional expiration date (time.RFC3339)
     }
     campaign = await TonicPow.createCampaign(campaign)
     console.log('campaign created', campaign)
