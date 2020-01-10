@@ -250,8 +250,14 @@ let apiKey = process.env.TONICPOW_API_KEY || ''
     //
     // Example: Convert a goal (by user)
     //
-    let conversion = await TonicPow.createConversionByUserID(1, 1, 'my custom attributes')
+    let conversion = await TonicPow.createConversionByUserID(1, 1, 'my custom attributes', 10)
     console.log('conversion successful', conversion)
+
+    //
+    // Example: Cancel a Delayed Conversion
+    //
+    conversion = await TonicPow.cancelConversion(conversion.id,  'not needed anymore')
+    console.log('conversion status', conversion.status)
 
   } catch(e){
     console.error(e)
