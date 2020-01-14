@@ -1,6 +1,6 @@
 {
   "name": "tonicpow-js",
-  "version": "0.1.36",
+  "version": "0.1.37",
   "description": "TonicPow API Library in JS - https://docs.tonicpow.com",
   "main": "lib/api.js",
   "repository": {

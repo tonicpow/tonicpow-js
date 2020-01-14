@@ -167,7 +167,7 @@ let apiKey = process.env.TONICPOW_API_KEY || ''
     console.log('updated title: '+campaign.title)
 
     //
-    // Example: Create a goal
+    // Example: Create a goal (flat rate)
     //
     let goal = {
       campaign_id: campaign.id,
@@ -192,6 +192,20 @@ let apiKey = process.env.TONICPOW_API_KEY || ''
     goal.title = 'Landing Page Leads Goal'
     goal = await TonicPow.updateGoal(goal)
     console.log('updated title: '+goal.title)
+
+    //
+    // Example: Create a goal (percent based)
+    //
+    let goalPercent = {
+      campaign_id: campaign.id,
+      description: 'Get 10% of all action!',
+      name: 'all-action',
+      payout_rate: 0.10, // 10% of "purchaseAmount"
+      payout_type: 'percent',
+      title: '10% Commissions'
+    }
+    goalPercent = await TonicPow.createGoal(goalPercent)
+    console.log('goal created', goalPercent)
 
     //
     // Example: Create a link
@@ -248,9 +262,9 @@ let apiKey = process.env.TONICPOW_API_KEY || ''
     //console.log('conversion successful', conversion)
 
     //
-    // Example: Convert a goal (by user)
+    // Example: Convert a goal (by user) (delayed)
     //
-    let conversion = await TonicPow.createConversionByUserID(1, 1, 'my custom attributes', 10)
+    let conversion = await TonicPow.createConversionByUserID(1, 1, 'my custom attributes', 0, 10)
     console.log('conversion successful', conversion)
 
     //
