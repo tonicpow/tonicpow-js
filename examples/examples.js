@@ -238,6 +238,13 @@ let apiKey = process.env.TONICPOW_API_KEY || ''
     console.log('campaigns found: '+campaigns.length)
 
     //
+    // Example: Get of campaigns by Url
+    //
+    campaigns = await TonicPow.getCampaignsByUrl(campaigns[0].target_url)
+    //console.log(campaigns)
+    console.log('campaigns found by url: '+campaigns.length)
+
+    //
     // Example: Create a Visitor Session
     //
     let visitorSession = {
