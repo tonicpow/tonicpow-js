@@ -280,6 +280,12 @@ let apiKey = process.env.TONICPOW_API_KEY || ''
     conversion = await TonicPow.cancelConversion(conversion.id,  'not needed anymore')
     console.log('conversion status', conversion.status)
 
+    //
+    // Example: Get a current rate
+    //
+    let rate = await TonicPow.getCurrentRate('usd')
+    console.log('rate found ', rate.currency_name, 'price in satoshis', rate.price_in_satoshis)
+
   } catch(e){
     console.error(e)
   }
