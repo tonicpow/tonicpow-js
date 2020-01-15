@@ -261,6 +261,19 @@ let apiKey = process.env.TONICPOW_API_KEY || ''
     console.log('session found: '+visitorSession.tncpw_session)
 
     //
+    // Example: Create a Visitor Session (Full Anti-Bot Options)
+    //
+    visitorSession = {
+      link_id:           link.id,
+      custom_dimensions: "any custom data attributes",
+      ip_address:        "123.123.123.123",                                // Visitor's IP Address
+      referer:           "https://somewebsite.com/page",                   // If there was a referer
+      user_agent:        "Mozilla/5.0 Chrome/51.0.2704.64 Safari/537.36",  // Visitor's user agent
+    }
+    visitorSession = await TonicPow.createVisitorSession(visitorSession)
+    console.log('session created', visitorSession.tncpw_session)
+
+    //
     // Example: Convert a goal (by session)
     //
     //let sessionId = urlParams.get('tncpw_session') // From your application's front-end
