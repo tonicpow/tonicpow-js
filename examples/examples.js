@@ -283,7 +283,7 @@ let apiKey = process.env.TONICPOW_API_KEY || ''
     //
     // Example: Get a current rate
     //
-    let rate = await TonicPow.getCurrentRate('usd')
+    let rate = await TonicPow.getCurrentRate('usd',0.00)
     console.log('rate found ', rate.currency_name, 'price in satoshis', rate.price_in_satoshis)
 
   } catch(e){
