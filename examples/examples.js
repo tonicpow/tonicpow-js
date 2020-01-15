@@ -92,12 +92,12 @@ let apiKey = process.env.TONICPOW_API_KEY || ''
     //
     // Example: Update & get the users balance
     //
-    /*user = await TonicPow.getUserBalance(user.id)
+    user = await TonicPow.getUserBalance(user.id,0)
     if (user.balance){
       console.log('balance found')
     } else {
       console.log('balance is empty')
-    }*/
+    }
 
     //
     // Example: Get a user
