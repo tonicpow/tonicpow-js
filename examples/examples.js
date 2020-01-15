@@ -249,7 +249,7 @@ let apiKey = process.env.TONICPOW_API_KEY || ''
     //
     let visitorSession = {
       link_id: link.id,
-      additional_data: "any custom data attributes",
+      custom_dimensions: "any custom data attributes",
     }
     visitorSession = await TonicPow.createVisitorSession(visitorSession)
     console.log('session created', visitorSession.tncpw_session)
