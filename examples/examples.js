@@ -299,6 +299,12 @@ let apiKey = process.env.TONICPOW_API_KEY || ''
     let rate = await TonicPow.getCurrentRate('usd',0.00)
     console.log('rate found ', rate.currency_name, 'price in satoshis', rate.price_in_satoshis)
 
+    //
+    // Example: Logout user
+    //
+    let logout = await TonicPow.logoutUser(TonicPow.session.userToken)
+    console.log(logout, "user cookie", TonicPow.session.userCookie)
+
   } catch(e){
     console.error(e)
   }
