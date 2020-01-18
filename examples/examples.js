@@ -231,6 +231,24 @@ let apiKey = process.env.TONICPOW_API_KEY || ''
     console.log('link found by code: '+link.short_code)
 
     //
+    // Example: Create a link (custom)
+    //
+    link = {
+      campaign_id: campaign.id,
+      user_id: user.id,
+      custom_short_code: user.first_name + someRandomNumber,
+    }
+    link = await TonicPow.createLink(link)
+    console.log('link created', link.short_code)
+
+    //
+    // Example: List of Get Links by User
+    //
+    let links = await TonicPow.getLinksByUserID(user.id)
+    //console.log(links)
+    console.log('links found: '+links.length)
+
+    //
     // Example: List of campaigns
     //
     let campaigns = await TonicPow.listCampaigns()
