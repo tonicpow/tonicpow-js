@@ -78,6 +78,18 @@ let apiKey = process.env.TONICPOW_API_KEY || ''
     console.log(user)
 
     //
+    // Example: Does User Exist?
+    //
+    let resp = await TonicPow.userExists(user.email)
+    console.log("user exists", resp.exists)
+
+    //
+    // Example: Does User Exist? (does not)
+    //
+    resp = await TonicPow.userExists("user@doesnotexist.com")
+    console.log("user exists", resp.exists)
+
+    //
     // Example: Getting a user's cookie
     //
     console.log(TonicPow.session.userCookie)
