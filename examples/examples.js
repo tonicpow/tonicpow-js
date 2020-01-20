@@ -59,6 +59,12 @@ let apiKey = process.env.TONICPOW_API_KEY || ''
     console.log("user created: " + someEmailAddress)
 
     //
+    // Example: Accept New User
+    //
+    response = await TonicPow.acceptUser(user.id)
+    console.log(response)
+
+    //
     // Example: Login (as a user) (creates a user session/token)
     //
     response = await TonicPow.loginUser(someEmailAddress, someTemporaryPassword)
