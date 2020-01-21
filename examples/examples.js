@@ -344,7 +344,7 @@ let apiKey = process.env.TONICPOW_API_KEY || ''
     //
     // Example: Logout user
     //
-    let logout = await TonicPow.logoutUser(TonicPow.session.userToken)
+    let logout = await TonicPow.logoutUser(cookieHeader)
     console.log(logout, "user cookie", TonicPow.session.userCookie)
 
   } catch(e){
