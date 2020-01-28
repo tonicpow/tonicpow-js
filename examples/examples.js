@@ -280,6 +280,13 @@ let apiKey = process.env.TONICPOW_API_KEY || ''
     console.log('campaigns found: '+campaigns.length)
 
     //
+    // Example: List of campaigns (by advertiser)
+    //
+    campaigns = await TonicPow.getCampaignsByAdvertiserProfile(advertiser.id)
+    //console.log(campaigns)
+    console.log('campaigns by advertiser found: '+campaigns.length)
+
+    //
     // Example: Get of campaigns by Url
     //
     campaigns = await TonicPow.getCampaignsByUrl(campaigns[0].target_url)
