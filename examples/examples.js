@@ -275,7 +275,7 @@ let apiKey = process.env.TONICPOW_API_KEY || ''
     //
     // Example: List of campaigns
     //
-    let campaignResults = await TonicPow.listCampaigns()
+    let campaignResults = await TonicPow.listCampaigns('',1,5,'balance','desc')
     //console.log(campaignResults)
     console.log('campaigns found: '+campaignResults.results)
 
