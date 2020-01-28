@@ -268,30 +268,30 @@ let apiKey = process.env.TONICPOW_API_KEY || ''
     //
     // Example: List of Get Links by User
     //
-    let links = await TonicPow.getLinksByUserID(user.id)
-    //console.log(links)
-    console.log('links found: '+links.length)
+    let linkResults = await TonicPow.listLinksByUserID(user.id)
+    //console.log(linkResults)
+    console.log('links found: '+linkResults.results)
 
     //
     // Example: List of campaigns
     //
-    let campaigns = await TonicPow.listCampaigns()
-    //console.log(campaigns)
-    console.log('campaigns found: '+campaigns.length)
+    let campaignResults = await TonicPow.listCampaigns()
+    //console.log(campaignResults)
+    console.log('campaigns found: '+campaignResults.results)
 
     //
     // Example: List of campaigns (by advertiser)
     //
-    campaigns = await TonicPow.getCampaignsByAdvertiserProfile(advertiser.id)
+    campaignResults = await TonicPow.listCampaignsByAdvertiserProfile(advertiser.id)
     //console.log(campaigns)
-    console.log('campaigns by advertiser found: '+campaigns.length)
+    console.log('campaigns by advertiser found: '+campaignResults.results)
 
     //
     // Example: Get of campaigns by Url
     //
-    campaigns = await TonicPow.getCampaignsByUrl(campaigns[0].target_url)
+    campaignResults = await TonicPow.listCampaignsByUrl(campaignResults.campaigns[0].target_url)
     //console.log(campaigns)
-    console.log('campaigns found by url: '+campaigns.length)
+    console.log('campaigns found by url: '+campaignResults.results)
 
     //
     // Example: Create a Visitor Session
