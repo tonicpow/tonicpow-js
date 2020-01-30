@@ -2,13 +2,16 @@ let chai = require('chai');
 let expect = chai.expect;
 let assert = chai.assert;
 
-// Load the api package
 let TonicPow = require('../lib/api')
 
 // Set the API key from our local environment
 let apiKey = process.env.TONICPOW_API_KEY || ''
 
 describe('basic tests', function() {
+  beforeEach(function() {
+    TonicPow.loaded = false
+  });
+
   it('loaded should be false', function() {
     assert.equal(TonicPow.loaded, false)
   })
@@ -34,7 +37,7 @@ describe('basic tests', function() {
 
   it('missing api key', async () => {
     try {
-      await TonicPow.init('',TonicPow.config.environments.Local)
+      await TonicPow.init('',{environment: TonicPow.config.environments.Local.name})
     } catch (e) {
       expect(e.message).to.equal('invalid api key')
     }
@@ -42,7 +45,7 @@ describe('basic tests', function() {
 
   it('authentication failed', async () => {
     try {
-      await TonicPow.init('not-a-valid-key',TonicPow.config.environments.Local)
+      await TonicPow.init('57d85ad0e7622eff250c9b8619b4de7f',{environment: TonicPow.config.environments.Local.name})
     } catch (e) {
       expect(e.message).to.equal('authentication failed')
     }
@@ -50,7 +53,7 @@ describe('basic tests', function() {
 
   it('invalid environment', async () => {
     try {
-      const result = await TonicPow.init('not-a-valid-key','bad-env')
+      const result = await TonicPow.init('57d85ad0e7622eff250c9b8619b4de7f',{environment: 'bad-env'})
     } catch (e) {
       expect(e.message).to.equal('invalid environment')
     }
@@ -59,14 +62,14 @@ describe('basic tests', function() {
   it('valid api key', async () => {
     expect(apiKey).to.be.a('string');
     expect(apiKey).to.have.lengthOf.above(10);
-    const result = await TonicPow.init(apiKey,TonicPow.config.environments.Local)
+    const result = await TonicPow.init(apiKey,{environment: TonicPow.config.environments.Local.name})
     expect(result.success).to.equal('local api loaded')
   })
 
   it('after init', async () => {
     expect(apiKey).to.be.a('string');
     expect(apiKey).to.have.lengthOf.above(10);
-    const result = await TonicPow.init(apiKey,TonicPow.config.environments.Local)
+    const result = await TonicPow.init(apiKey,{environment: TonicPow.config.environments.Local.name})
     expect(result.success).to.equal('local api loaded')
     expect(TonicPow.config.apiKey).to.equal(apiKey)
     expect(TonicPow.config.environment).to.equal(TonicPow.config.environments.Local.name)
