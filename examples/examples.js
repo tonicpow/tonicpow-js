@@ -135,6 +135,18 @@ let apiKey = process.env.TONICPOW_API_KEY || ''
     //await TonicPow.activateUser(user.id)
 
     //
+    // Example: Forgot password
+    //
+    //await TonicPow.forgotPassword(user.email)
+    //console.log('forgot password success')
+
+    //
+    // Example: Reset password
+    //
+    //response = await TonicPow.resetPassword('2fc8ac4914bc423c8652f714e5c639ee','TestPwChanged!','TestPwChanged!')
+    //console.log('reset password success - email: ', response.email)
+
+    //
     // Example: Create an advertiser profile
     //
     let advertiser = {
