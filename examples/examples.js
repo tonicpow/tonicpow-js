@@ -343,9 +343,16 @@ let apiKey = process.env.TONICPOW_API_KEY || ''
     //console.log('conversion successful', conversion)
 
     //
+    // Example: Convert a goal (by session - from cookie)
+    //
+    let userHeaderCookie = '__cfduid=dd6545b872516b240cb6185c97c3ab02; _ga=GA1.2.741780225.1580598550; _gid=GA1.2.510252994.1580598550; tncpw_session='+visitorSession.tncpw_session+'\n'
+    let conversion = await TonicPow.createConversionByGoalID(goal.id, userHeaderCookie, 'my custom attributes')
+    console.log('conversion successful', conversion)
+
+    //
     // Example: Convert a goal (by user) (delayed)
     //
-    let conversion = await TonicPow.createConversionByUserID(1, 1, 'my custom attributes', 0, 10)
+    conversion = await TonicPow.createConversionByUserID(1, 1, 'my custom attributes', 0, 10)
     console.log('conversion successful', conversion)
 
     //
