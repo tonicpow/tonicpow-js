@@ -120,7 +120,7 @@ let apiKey = process.env.TONICPOW_API_KEY || ''
     //
     // Example: Create User (referred by user)
     //
-    let refUser = await TonicPow.createUser({email: "another"+someEmailAddress, password: someTemporaryPassword, referred_by_user_id: user.id})
+    let refUser = await TonicPow.createUser({email: "another"+someEmailAddress, password: someTemporaryPassword}, '', user.id)
     console.log("user created: " + refUser.id + " referred by "+refUser.referred_by_user_id)
 
     //
