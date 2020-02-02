@@ -35,6 +35,17 @@ describe('basic tests', function() {
     assert.equal(TonicPow.config.environments.Staging.name, 'staging')
   })
 
+  it('check visitor session parsing', function() {
+    TonicPow.session.visitorSession = 'not-valid'
+    assert.equal(TonicPow.session.visitorSession, null)
+
+    TonicPow.session.visitorSession = 'ebb5e0084ee4e7521d95d915b71d4f546437d197ca06c2a2994ae76053c8598z'
+    assert.equal(TonicPow.session.visitorSession, 'ebb5e0084ee4e7521d95d915b71d4f546437d197ca06c2a2994ae76053c8598z')
+
+    TonicPow.session.visitorSession = '__cfduid=dd6545b872516b240cb6185c97; _ga=GA1.2.741780225.1580598550; _gid=GA1.2.510252994.1580598550;  tncpw_session=826d23410c230dc1a3c49b0a3b91ed52bc1096fbc6718aafa4809c967c5ac9bc\n'
+    assert.equal(TonicPow.session.visitorSession, '826d23410c230dc1a3c49b0a3b91ed52bc1096fbc6718aafa4809c967c5ac9bc')
+  })
+
   it('missing api key', async () => {
     try {
       await TonicPow.init('',{environment: TonicPow.config.environments.Local.name})
