@@ -61,7 +61,7 @@ let apiKey = process.env.TONICPOW_API_KEY || ''
     //
     // Example: Accept New User
     //
-    response = await TonicPow.acceptUser(user.id)
+    response = await TonicPow.acceptUser(user.id,'')
     console.log(response)
 
     //
@@ -132,7 +132,7 @@ let apiKey = process.env.TONICPOW_API_KEY || ''
     //
     // Example: Activate a user
     //
-    //await TonicPow.activateUser(user.id)
+    //await TonicPow.activateUser(user.id, '')
 
     //
     // Example: Forgot password
