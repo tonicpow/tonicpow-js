@@ -18,7 +18,7 @@
   },
   "scripts": {
     "lint": "cd lib && standard --fix || true",
-    "publish": "npm publish --access public",
+    "deploy": "npm publish --access public",
     "test": "mocha"
   },
   "contributors": [
