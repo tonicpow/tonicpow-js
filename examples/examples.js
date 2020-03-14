@@ -14,11 +14,12 @@ let apiKey = process.env.TONICPOW_API_KEY || ''
     // Example: All Options  (these are all optional, use as needed) (example for Firebase Cloud Functions)
     //
     let allOptions = {
-      environment: TonicPow.config.environments.Local,
       cookieDomain: 'tonicpow.com',
       cookieName: '__session',
-      maxAge: 173800,
+      environment: TonicPow.config.environments.Local,
       httpOnly: true,
+      maxAge: 173800,
+      sameSite: "None",
       secureCookie: true,
       //token: customApiToken,
     }
