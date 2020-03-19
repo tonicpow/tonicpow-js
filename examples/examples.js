@@ -62,7 +62,7 @@ let apiKey = process.env.TONICPOW_API_KEY || ''
     //
     // Example: Accept New User
     //
-    response = await TonicPow.acceptUser(user.id,'')
+    response = await TonicPow.acceptUser(user.id,'', 'awesome person')
     console.log(response)
 
     //
