@@ -105,6 +105,7 @@ let apiKey = process.env.TONICPOW_API_KEY || ''
     // Example: Update a user
     //
     user.first_name = 'Jack'
+    user.payout_address = 'mrz@moneybutton.com'
     user = await TonicPow.updateUser(user)
     console.log(user.first_name)
 
@@ -133,7 +134,17 @@ let apiKey = process.env.TONICPOW_API_KEY || ''
     //
     // Example: Activate a user
     //
-    //await TonicPow.activateUser(user.id, '')
+    //await TonicPow.activateUser(user.id, 'your reason')
+
+    //
+    // Example: Release internal balance to user's payout_address
+    //
+    //await TonicPow.releaseUserBalance(user.id, 'your reason')
+
+    //
+    // Example: Refund internal balance back to the corresponding campaigns
+    //
+    //await TonicPow.refundUserBalance(user.id, 'reason for refunding')
 
     //
     // Example: Forgot password
