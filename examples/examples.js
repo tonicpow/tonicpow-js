@@ -132,6 +132,12 @@ let apiKey = process.env.TONICPOW_API_KEY || ''
     console.log('user found: '+user.email)
 
     //
+    // Example: Get all referrals by a certain user
+    //
+    //let users = await TonicPow.getUserReferrals(0,user.email)
+    //console.log('referred users: '+users.length)
+
+    //
     // Example: Activate a user
     //
     //await TonicPow.activateUser(user.id, 'your reason')
