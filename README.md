@@ -1,6 +1,6 @@
 <img src=".github/IMAGES/tonicpow-js.png" height="250" alt="TonicPow JS">
 
-**TonicPow JS** is the official JavaScript implementation for interacting with the [TonicPow API](https://docs.tonicpow.com)
+> **TonicPow JS** is the official JavaScript implementation for interacting with the [TonicPow API](https://docs.tonicpow.com)
 
 [![last commit](https://img.shields.io/github/last-commit/tonicpow/tonicpow-js.svg?style=flat)](https://github.com/tonicpow/tonicpow-js/commits/master)
 [![Release](https://img.shields.io/github/release-pre/tonicpow/tonicpow-js.svg?style=flat)](https://github.com/tonicpow/tonicpow-js/releases)
@@ -29,13 +29,13 @@ Familiar with Go? Here's an [example in Go](https://github.com/tonicpow/go-tonic
 
 ## Install via npm
 From your project's directory:
-```bash
-$ npm install tonicpow-js --save
+```shell script
+npm install tonicpow-js
 ``` 
 
 And load the module in your project:
 ```javascript 
-let TonicPow = require('tonicpow-js');
+let TonicPow = require('tonicpow-js')
 await TonicPow.init('your-api-key')
 ``` 
 
@@ -75,7 +75,7 @@ Back-end package for interacting with the [TonicPow API](https://docs.tonicpow.c
 
 View [full demo examples](examples/examples.js) of using the package.
 
-There is also a [Golang implementation](https://github.com/tonicpow/go-tonicpow) for this package.
+There is also a [Go implementation](https://github.com/tonicpow/go-tonicpow) for this package.
 
 ## Maintainers
 | [<img src="https://github.com/mrz1836.png" height="50" alt="MrZ" />](https://github.com/mrz1836) | [<img src="https://github.com/rohenaz.png" height="50" alt="Satchmo" />](https://github.com/rohenaz) | [<img src="https://github.com/attilaaf.png" height="50" alt="Atilla" />](https://github.com/attilaaf) |
