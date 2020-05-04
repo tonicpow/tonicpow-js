@@ -11,3 +11,6 @@ examples/
 .firebaserc
 firebase.json
 todo.md
+dist
+.goreleaser.yml
+Makefile
