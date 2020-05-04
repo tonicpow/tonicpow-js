@@ -61,6 +61,9 @@ View [examples](examples/examples.js) of using this package.
 ## Documentation
 This is a JavaScript library for the [TonicPow API](https://docs.tonicpow.com). All methods and models are described in [this documentation](https://docs.tonicpow.com).
 
+### Visitor Sessions (front-end)
+Here is the [documentation for visitor sessions](front_end.md) for converting goals.
+
 <details>
 <summary><strong><code>Library Deployment</code></strong></summary>
 
@@ -92,9 +95,6 @@ tag-update                     Update an existing tag to current commit (IE: tag
 update-releaser                Update the goreleaser application
 ```
 </details>
-
-#### Visitor Sessions (front-end) _(optional)_
-Here is the [documentation for visitor sessions](front_end.md) for converting goals.
 
 ## Examples
 View [examples](examples/examples.js) of using the package.
