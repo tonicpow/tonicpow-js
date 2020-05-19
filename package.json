@@ -38,7 +38,7 @@
     "bitcoin",
     "bsv"
   ],
-  "homepage": "https://github.com/tonicpow/tonicpow-js",
+  "homepage": "https://docs.tonicpow.com",
   "devDependencies": {
     "chai": "^4.2.0",
     "mocha": "^7.1.2"
