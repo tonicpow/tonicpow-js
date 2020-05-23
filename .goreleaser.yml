@@ -4,8 +4,7 @@
 # ---------------------------
 before:
   hooks:
-    # run make
-    #- make test
+    - make test
 snapshot:
   name_template: "{{ .Tag }}"
 changelog:

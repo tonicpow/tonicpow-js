@@ -8,6 +8,8 @@
 [![standard-readme compliant](https://img.shields.io/badge/standard--readme-OK-green.svg?style=flat)](https://github.com/RichardLitt/standard-readme)
 [![slack](https://img.shields.io/badge/slack-tonicpow-orange.svg?style=flat)](https://atlantistic.slack.com/app_redirect?channel=tonicpow)
 
+<br/>
+
 ## Table of Contents
 - [Getting Started](#getting-started)
 - [Installation](#install-via-npm)
@@ -18,6 +20,8 @@
 - [Maintainers](#maintainers)
 - [Contributing](#contributing)
 - [License](#license)
+
+<br/>
 
 ## Getting Started
 This is a JavaScript library that has complete coverage for the [TonicPow API](https://docs.tonicpow.com).
@@ -58,6 +62,8 @@ View [examples](examples/examples.js) of using this package.
     - [x] [Visitors](https://docs.tonicpow.com/#d0d9055a-0c92-4f55-a370-762d44acf801)
     - [x] [Rates](https://docs.tonicpow.com/#fb00736e-61b9-4ec9-acaf-e3f9bb046c89)
 
+<br/>
+
 ## Documentation
 This is a JavaScript library for the [TonicPow API](https://docs.tonicpow.com). All methods and models are described in [this documentation](https://docs.tonicpow.com).
 
@@ -66,6 +72,7 @@ Here is the [documentation for visitor sessions](front_end.md) for converting go
 
 <details>
 <summary><strong><code>Library Deployment</code></strong></summary>
+<br/>
 
 [goreleaser](https://github.com/goreleaser/goreleaser) for easy binary or library deployment to Github and can be installed via: `brew install goreleaser`.
 
@@ -76,6 +83,7 @@ Use `make release-snap` to create a snapshot version of the release, and finally
 
 <details>
 <summary><strong><code>Makefile Commands</code></strong></summary>
+<br/>
 
 View all `makefile` commands
 ```shell script
@@ -84,23 +92,35 @@ make help
 
 List of all current commands:
 ```text
-clean                          Remove previous builds and any test cache data
-help                           Show all commands available
-release                        Full production release (creates release in Github)
-release-test                   Full production test release (everything except deploy)
-release-snap                   Test the full release (build binaries)
-tag                            Generate a new tag and push (IE: tag version=0.0.0)
-tag-remove                     Remove a tag if found (IE: tag-remove version=0.0.0)
-tag-update                     Update an existing tag to current commit (IE: tag-update version=0.0.0)
-update-releaser                Update the goreleaser application
+audit                Checks for vulnerabilities in dependencies
+clean                Remove previous builds and any test cache data
+help                 Show this help message
+install              Installs the dependencies for the packge
+lint                 Runs the standard-js lint tool
+outdated             Checks for outdated packages via npm
+publish              Will publish the version to npm
+release              Full production release (creates release in Github)
+release-snap         Test the full release (build binaries)
+release-test         Full production test release (everything except deploy)
+replace-version      Replaces the version in HTML/JS (pre-deploy)
+tag                  Generate a new tag and push (tag version=0.0.0)
+tag-remove           Remove a tag if found (tag-remove version=0.0.0)
+tag-update           Update an existing tag to current commit (tag-update version=0.0.0)
+test                 Will run unit tests
 ```
 </details>
+
+<br/>
 
 ## Examples
 View [examples](examples/examples.js) of using the package.
 
+<br/>
+
 ## Code Standards
 Always use the language's best practices!
+
+<br/>
 
 ## Usage
 Back-end package for interacting with the [TonicPow API](https://docs.tonicpow.com)
@@ -109,6 +129,8 @@ View [full demo examples](examples/examples.js) of using the package.
 
 There is also a [Go implementation](https://github.com/tonicpow/go-tonicpow) for this package.
 
+<br/>
+
 ## Maintainers
 | [<img src="https://github.com/mrz1836.png" height="50" alt="MrZ" />](https://github.com/mrz1836) | [<img src="https://github.com/rohenaz.png" height="50" alt="Satchmo" />](https://github.com/rohenaz) | [<img src="https://github.com/attilaaf.png" height="50" alt="Atilla" />](https://github.com/attilaaf) |
 |:---:|:---:|:---:|
@@ -116,8 +138,12 @@ There is also a [Go implementation](https://github.com/tonicpow/go-tonicpow) for
                                                                                                                                                            
 Support the development of this project and the [TonicPow](https://tonicpow.com/) team 🙏
 
+<br/>
+
 ## Contributing
 Feel free to dive in! [Open an issue](https://github.com/tonicpow/tonicpow-js/issues/new) or submit PRs.
+
+<br/>
 
 ## License
 [![License](https://img.shields.io/badge/license-Open%20BSV-brightgreen.svg?style=flat)](/LICENSE)

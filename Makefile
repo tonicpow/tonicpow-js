@@ -1,42 +1,36 @@
-## Set the distribution folder
-ifndef DISTRIBUTIONS_DIR
-override DISTRIBUTIONS_DIR=./dist
+# Common makefile commands & variables between projects
+include .make/Makefile.common
+
+## Not defined? Use default repo name which is the application
+ifeq ($(REPO_NAME),)
+	REPO_NAME="tonicpow-js"
 endif
 
-.PHONY: clean release
+## Not defined? Use default repo owner
+ifeq ($(REPO_OWNER),)
+	REPO_OWNER="mrz1836"
+endif
+
+.PHONY: clean release test
+
+audit: ## Checks for vulnerabilities in dependencies
+	@npm audit
 
 clean: ## Remove previous builds and any test cache data
 	@if [ -d $(DISTRIBUTIONS_DIR) ]; then rm -r $(DISTRIBUTIONS_DIR); fi
+	@if [ -d node_modules ]; then rm -r node_modules; fi
 
-help: ## Show all commands available
-	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
+install: ## Installs the dependencies for the packge
+	@npm install
 
-release: ## Full production release (creates release in Github)
-	@goreleaser --rm-dist
+lint: ## Runs the standard-js lint tool
+	@npm run lint
 
-release-test: ## Full production test release (everything except deploy)
-	@goreleaser --skip-publish --rm-dist
+outdated: ## Checks for outdated packages via npm
+	@npm outdated
 
-release-snap: ## Test the full release (build binaries)
-	@goreleaser --snapshot --skip-publish --rm-dist
+publish: ## Will publish the version to npm
+	@npm run deploy
 
-tag: ## Generate a new tag and push (IE: tag version=0.0.0)
-	@test $(version)
-	@git tag -a v$(version) -m "Pending full release..."
-	@git push origin v$(version)
-	@git fetch --tags -f
-
-tag-remove: ## Remove a tag if found (IE: tag-remove version=0.0.0)
-	@test $(version)
-	@git tag -d v$(version)
-	@git push --delete origin v$(version)
-	@git fetch --tags
-
-tag-update: ## Update an existing tag to current commit (IE: tag-update version=0.0.0)
-	@test $(version)
-	@git push --force origin HEAD:refs/tags/v$(version)
-	@git fetch --tags -f
-
-update-releaser:  ## Update the goreleaser application
-	@brew update
-	@brew upgrade goreleaser
+test: ## Will run unit tests
+	@npm run test
