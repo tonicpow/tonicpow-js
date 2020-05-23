@@ -32,5 +32,8 @@ outdated: ## Checks for outdated packages via npm
 publish: ## Will publish the version to npm
 	@npm run deploy
 
+release:: ## Run after releasing - deploy to npm
+	@$(MAKE) publish
+
 test: ## Will run unit tests
 	@npm run test
