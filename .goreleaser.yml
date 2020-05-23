@@ -20,6 +20,13 @@ changelog:
 build:
   skip: true
 # ---------------------------
+# Publishers
+# ---------------------------
+publishers:
+  - name: npm
+    cmd: make publish
+    dir: "."
+# ---------------------------
 # Github Release
 # ---------------------------
 release:
