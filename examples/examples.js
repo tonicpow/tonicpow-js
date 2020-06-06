@@ -291,6 +291,12 @@ let apiKey = process.env.TONICPOW_API_KEY || ''
     console.log('link found by code: '+link.short_code)
 
     //
+    // Example: Get campaign via short code
+    //
+    campaign = await TonicPow.getCampaignByShortCode(link.short_code)
+    console.log('campaign found: '+campaign.title)
+
+    //
     // Example: Create a link (custom)
     //
     link = {
