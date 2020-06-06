@@ -8,7 +8,7 @@ endif
 
 ## Not defined? Use default repo owner
 ifeq ($(REPO_OWNER),)
-	REPO_OWNER="mrz1836"
+	REPO_OWNER="tonicpow"
 endif
 
 .PHONY: clean release test
