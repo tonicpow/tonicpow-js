@@ -58,8 +58,7 @@ describe('basic tests', function() {
     try {
       await TonicPow.init('57d85ad0e7622eff250c9b8619b4de7f',{environment: TonicPow.config.environments.Local.name})
     } catch (e) {
-      //todo: flags for unit vs integration teste is needed
-      if (e.indexOf("connect ECONNREFUSED") === -1) {
+      if(typeof e === "object") {
         expect(e.message).to.equal('authentication failed')
       }
     }
