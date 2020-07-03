@@ -105,7 +105,7 @@ let apiKey = process.env.TONICPOW_API_KEY || ''
     // Example: Update a user
     //
     user.first_name = 'Jack'
-    user.payout_address = 'mrz@moneybutton.com'
+    // user.payout_address = 'mrz@moneybutton.com'
     user = await TonicPow.updateUser(user)
     console.log(user.first_name)
 
@@ -406,10 +406,18 @@ let apiKey = process.env.TONICPOW_API_KEY || ''
     console.log('conversion status', conversion.status)
 
     //
+    // Example: Set a custom header
+    //
+    TonicPow.session.customHeaders = {
+      "x-custom-header": "custom-value",
+      "x-another-custom-header": "another-value",
+    }
+
+    //
     // Example: Get a current rate
     //
     let rate = await TonicPow.getCurrentRate('usd',0.00)
-    console.log('rate found ', rate.currency_name, 'price in satoshis', rate.price_in_satoshis)
+    console.log('price in satoshis', rate.price_in_satoshis)
 
     //
     // Example: Logout user
