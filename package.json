@@ -1,6 +1,6 @@
 {
   "name": "tonicpow-js",
-  "version": "0.1.75",
+  "version": "0.1.76",
   "description": "TonicPow API Library in JS - https://docs.tonicpow.com",
   "main": "lib/api.js",
   "repository": {
@@ -41,10 +41,10 @@
   "homepage": "https://docs.tonicpow.com",
   "devDependencies": {
     "chai": "^4.2.0",
-    "mocha": "^8.1.1"
+    "mocha": "^8.1.2"
   },
   "dependencies": {
-    "axios": "^0.19.2",
+    "axios": "^0.20.0",
     "axios-cookiejar-support": "^1.0.0",
     "tough-cookie": "^4.0.0"
   },
