@@ -1,8 +1,8 @@
 {
   "name": "tonicpow-js",
-  "version": "0.1.77",
+  "version": "0.2.0",
   "description": "TonicPow API Library in JS - https://docs.tonicpow.com",
-  "main": "lib/api.js",
+  "main": "dist/api.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/tonicpow/tonicpow-js/"
@@ -18,6 +18,7 @@
   },
   "scripts": {
     "lint": "cd lib && standard --fix || true",
+    "build": "rimraf dist/ && babel lib/ --presets minify --out-dir dist/",
     "deploy": "npm publish --access public",
     "test": "mocha"
   },
@@ -40,19 +41,41 @@
   ],
   "homepage": "https://docs.tonicpow.com",
   "devDependencies": {
-    "chai": "^4.2.0",
-    "mocha": "^8.2.0"
+    "@babel/cli": "^7.12.10",
+    "@babel/core": "^7.12.10",
+    "@babel/plugin-transform-runtime": "^7.12.10",
+    "@babel/polyfill": "^7.12.1",
+    "@babel/preset-env": "^7.12.11",
+    "@babel/register": "^7.12.10",
+    "babel-core": "^7.0.0-bridge.0",
+    "babel-eslint": "^10.1.0",
+    "babel-jest": "^26.6.3",
+    "babel-plugin-add-module-exports": "^1.0.4",
+    "babel-preset-minify": "^0.5.1",
+    "eslint": "^7.16.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-plugin-import": "^2.22.1",
+    "jest": "^26.6.3",
+    "jest-cli": "^26.6.3",
+    "np": "2.20.1",
+    "npm-check": "^5.9.2",
+    "pre-commit": "^1.2.2",
+    "regenerator-runtime": "^0.12.1",
+    "rimraf": "2.6.2",
+    "run-sequence": "2.2.1"
   },
   "dependencies": {
+    "@babel/runtime": "^7.13.17",
     "axios": "^0.21.0",
     "axios-cookiejar-support": "^1.0.0",
+    "browser-or-node": "^1.3.0",
     "tough-cookie": "^4.0.0"
   },
   "files": [
-    "lib/*"
+    "dist/*"
   ],
   "bin": {
-    "tonicpow-js": "lib/api.js"
+    "tonicpow-js": "dist/api.js"
   },
   "engines": {
     "node": "*"
