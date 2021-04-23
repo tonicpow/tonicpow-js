@@ -62,3 +62,5 @@ todo.md
 
 # Deployment
 dist
+coverage
+module

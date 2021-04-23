@@ -3,6 +3,7 @@
   "version": "0.2.0",
   "description": "TonicPow API Library in JS - https://docs.tonicpow.com",
   "main": "dist/api.js",
+  "module": "./module/api.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/tonicpow/tonicpow-js/"
@@ -17,10 +18,18 @@
     "url": "https://github.com/tonicpow/tonicpow-js/issues"
   },
   "scripts": {
-    "lint": "cd lib && standard --fix || true",
-    "build": "rimraf dist/ && babel lib/ --presets minify --out-dir dist/",
+    "clean": "rimraf dist/ && rimraf module/",
+    "build": "npm run build-node && npm run build-module",
+    "build-node": "rimraf dist/ && babel lib/ --presets minify --out-dir dist/",
+    "build-module": "cross-env BABEL_ENV=module babel ./lib --out-dir ./module --source-maps --copy-files",
     "deploy": "npm publish --access public",
-    "test": "mocha"
+    "lint": "eslint ./lib",
+    "lintfix": "eslint ./lib --fix",
+    "prepare": "npm run clean && npm run lint && npm run test && npm run build",
+    "test": "npm run lint && npm run testquiet",
+    "testquiet": "./node_modules/.bin/jest --detectOpenHandles --forceExit --silent",
+    "testonly": "./node_modules/.bin/jest --collectCoverage --detectOpenHandles --forceExit",
+    "testwatch": "./node_modules/.bin/jest --watchAll --collectCoverage --detectOpenHandles"
   },
   "contributors": [
     {
@@ -52,12 +61,12 @@
     "babel-jest": "^26.6.3",
     "babel-plugin-add-module-exports": "^1.0.4",
     "babel-preset-minify": "^0.5.1",
+    "cross-env": "^7.0.3",
     "eslint": "^7.16.0",
     "eslint-config-airbnb-base": "^14.2.1",
     "eslint-plugin-import": "^2.22.1",
     "jest": "^26.6.3",
     "jest-cli": "^26.6.3",
-    "np": "2.20.1",
     "npm-check": "^5.9.2",
     "pre-commit": "^1.2.2",
     "regenerator-runtime": "^0.12.1",
@@ -76,6 +85,11 @@
   ],
   "bin": {
     "tonicpow-js": "dist/api.js"
+  },
+  "jest": {
+    "transform": {
+      "^.+\\.(mjs|jsx|js)$": "babel-jest"
+    }
   },
   "engines": {
     "node": "*"
