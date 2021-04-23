@@ -1,5 +1,5 @@
 # Common makefile commands & variables between projects
-include .make/Makefile.common
+include .make/common.mk
 
 ## Not defined? Use default repo name which is the application
 ifeq ($(REPO_NAME),)
