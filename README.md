@@ -42,7 +42,6 @@ And load the module in your project:
 import TonicPow from 'tonicpow-js'
 
 const api = new TonicPow('your-api-key')
-await api.auth();
 ``` 
 
 View [examples](examples/examples.js) of using this package.
