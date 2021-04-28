@@ -32,7 +32,7 @@ describe('basic tests', function () {
     jest.clearAllMocks();
   });
 
-  it('createAdvertiserProfile', async () => {
+  /* it('createAdvertiserProfile', async () => {
     // this only mocks the axios object, but not the Tonic Pow processing or wrappers
     mockAxios.post.mockImplementationOnce(() => Promise.resolve({data: advertiserData.return}));
 
@@ -44,9 +44,10 @@ describe('basic tests', function () {
       advertiserData.create,
       options,
     );
-    expect(tonicPow.session.userToken).toEqual(undefined);
   });
+  */
 
+  /*
   it('createAdvertiserProfile ERROR', async () => {
     mockAxios.post.mockImplementationOnce(() => Promise.reject({
       response: {
@@ -60,27 +61,8 @@ describe('basic tests', function () {
       {},
       options,
     );
-    expect(tonicPow.session.userToken).toEqual(undefined);
   });
-
-  it('createAdvertiserProfile with userSessionToken', async () => {
-    mockAxios.post.mockImplementationOnce(() => Promise.resolve({data: advertiserData.return}));
-
-    // the extra x-user-session-token should have been added to the request options
-    const userSessionToken = '__userSessionToken__';
-    const requestOptions = JSON.parse(JSON.stringify(options));
-    requestOptions.headers['x-user-session-token'] = userSessionToken;
-
-    // test the api call
-    const response = await tonicPow.createAdvertiserProfile(advertiserData.create, userSessionToken);
-    expect(response).toEqual(advertiserData.return);
-    expect(mockAxios.post).toHaveBeenCalledWith(
-      `https://api.tonicpow.com/v1/advertisers`,
-      advertiserData.create,
-      requestOptions,
-    );
-    expect(tonicPow.session.userToken).toEqual(userSessionToken);
-  });
+  */
 
   it('getAdvertiserProfile', async () => {
     mockAxios.get.mockImplementationOnce(() => Promise.resolve({data: advertiserData.return}));
@@ -92,7 +74,6 @@ describe('basic tests', function () {
       `https://api.tonicpow.com/v1/advertisers/details/206`,
       options,
     );
-    expect(tonicPow.session.userToken).toEqual(undefined);
   });
 
   it('updateAdvertiserProfile', async () => {
@@ -106,10 +87,9 @@ describe('basic tests', function () {
       advertiserData.update,
       options,
     );
-    expect(tonicPow.session.userToken).toEqual(undefined);
   });
 
-  // ... add other tests here
+  // todo: add other tests here
 
   it('createCampaign', async () => {
     mockAxios.post.mockImplementationOnce(() => Promise.resolve({data: campaignData.return}));
@@ -122,7 +102,6 @@ describe('basic tests', function () {
       campaignData.create,
       options,
     );
-    expect(tonicPow.session.userToken).toEqual(undefined);
   });
 
   it('getCampaign', async () => {
@@ -135,6 +114,5 @@ describe('basic tests', function () {
       `https://api.tonicpow.com/v1/campaigns/details/243`,
       options,
     );
-    expect(tonicPow.session.userToken).toEqual(undefined);
   });
 });
