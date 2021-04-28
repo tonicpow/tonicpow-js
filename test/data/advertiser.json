@@ -1,0 +1,32 @@
+{
+  "create": {
+    "name": "TonicPow",
+    "homepage_url": "https://tonicpow.com",
+    "icon_url": "https://tonicpow.com/images/apple-touch-icon.png"
+  },
+  "return": {
+    "domain_verified": false,
+    "homepage_url": "https://tonicpow.com",
+    "icon_url": "https://tonicpow.com/images/apple-touch-icon.png",
+    "id": 206,
+    "link_service_domain_id": 0,
+    "name": "TonicPow",
+    "user_id": 18,
+    "public_guid": "c48e32bb1ad54f36f43aa98686f5b82050b4bbd2d9e70f383e6cc2f8f6273fda",
+    "unlisted": false
+  },
+  "update": {
+    "id": 206,
+    "name": "TonicPow Now!"
+  },
+  "error": {
+    "code": 65,
+    "data": "",
+    "ip_address": "84.107.203.32",
+    "method": "POST",
+    "message": "missing required field: name",
+    "request_guid": "b62b07f0-5882-4fae-b68e-b35abe80449a",
+    "status_code": 422,
+    "url": "/v1/advertisers"
+  }
+}

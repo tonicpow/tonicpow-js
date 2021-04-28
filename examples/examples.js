@@ -1,5 +1,5 @@
 // Load the api package
-let TonicPow = require('../lib/api')
+import TonicPow from '../dist/api';
 
 // Set the API key from our local environment
 let apiKey = process.env.TONICPOW_API_KEY || ''
@@ -27,148 +27,14 @@ let apiKey = process.env.TONICPOW_API_KEY || ''
     //
     // Example: Load TonicPow api, creates a new session
     //
-    //let response = await TonicPow.init(apiKey)
-    let response = await TonicPow.init(apiKey, allOptions)
+    const tpow = new TonicPow(apiKey, allOptions)
+    let response = await tpow.auth();
     console.log(response)
-
-    //
-    // Example: Load TonicPow api with existing session token (cloud functions)
-    //
-    //let response = await TonicPow.init(apiKey, {environment: TonicPow.config.environments.Local, domain: 'tonicpow.com', token: customApiToken})
-    //console.log(response)
-    //console.log(TonicPow.session.apiToken)
-
-    //
-    // Example: Prolong a session (optional)
-    //
-    response = await TonicPow.prolongSession()
-    console.log(response)
-
-    //
-    // Example: End a session (optional)
-    //
-    //response = await TonicPow.endSession()
-    //console.log(response)
-
-    //
-    // Example: Create a new user
-    //
-    let someRandomNumber = Math.floor(100000 + Math.random() * 900000)
-    let someEmailAddress = 'test+' + someRandomNumber + '@tonicpow.com'
-    let someTemporaryPassword = 'ExamplePassForNow' + Math.floor(100000 + Math.random() * 900000)
-    let user = await TonicPow.createUser({email:someEmailAddress, password: someTemporaryPassword})
-    console.log("user created: " + someEmailAddress)
-
-    //
-    // Example: Accept New User
-    //
-    response = await TonicPow.acceptUser(user.id,'', 'awesome person')
-    console.log(response)
-
-    //
-    // Example: Login (as a user) (creates a user session/token)
-    //
-    response = await TonicPow.loginUser(someEmailAddress, someTemporaryPassword)
-    console.log(response)
-    console.log('user session token: ', TonicPow.session.userCookie)
-
-    //
-    // Example: Setting a user token from a cookie header (used for Cloud functions)
-    //
-    let cookieHeader = `Cookie: `+allOptions.cookieName+`=`+TonicPow.session.userToken+`; another_cookie=value; third_cookie=value`
-    //let cookieVal = allOptions.cookieName+`=`+TonicPow.session.userToken
-
-    //
-    // Example: Current User (get user details)
-    //
-    user = await TonicPow.currentUser(cookieHeader)
-    console.log(user)
-
-    //
-    // Example: Does User Exist?
-    //
-    let resp = await TonicPow.userExists(user.email)
-    console.log("user exists", resp.exists, resp.id, resp.status)
-
-    //
-    // Example: Does User Exist? (does not)
-    //
-    resp = await TonicPow.userExists("user@doesnotexist.com")
-    console.log("user exists", resp.exists)
 
     //
     // Example: Getting a user's cookie
     //
-    console.log(TonicPow.session.userCookie)
-
-    //
-    // Example: Update a user
-    //
-    user.first_name = 'Jack'
-    // user.payout_address = 'mrz@moneybutton.com'
-    user = await TonicPow.updateUser(user)
-    console.log(user.first_name)
-
-    //
-    // Example: Update & get the users balance
-    //
-    user = await TonicPow.getUserBalance(user.id,0)
-    if (user.balance){
-      console.log('balance found')
-    } else {
-      console.log('balance is empty')
-    }
-
-    //
-    // Example: Create User (referred by user)
-    //
-    let refUser = await TonicPow.createUser({email: "another"+someEmailAddress, password: someTemporaryPassword}, '', user.id)
-    console.log("user created: " + refUser.id + " referred by "+refUser.referred_by_user_id)
-
-    //
-    // Example: Get a user
-    //
-    user = await TonicPow.getUser(0,user.email)
-    console.log('user found: '+user.email)
-
-    //
-    // Example: Get all referrals by a certain user
-    //
-    //let users = await TonicPow.getUserReferrals(0,user.email)
-    //console.log('referred users: '+users.length)
-
-    //
-    // Example: List all referrals
-    //
-    //let referrals = await TonicPow.listUserReferrals(1,20,'referrals','DESC')
-    //console.log('referrals found: '+referrals.results)
-
-    //
-    // Example: Activate a user
-    //
-    //await TonicPow.activateUser(user.id, 'your reason')
-
-    //
-    // Example: Release internal balance to user's payout_address
-    //
-    //await TonicPow.releaseUserBalance(user.id, 'your reason')
-
-    //
-    // Example: Refund internal balance back to the corresponding campaigns
-    //
-    //await TonicPow.refundUserBalance(user.id, 'reason for refunding')
-
-    //
-    // Example: Forgot password
-    //
-    //await TonicPow.forgotPassword(user.email)
-    //console.log('forgot password success')
-
-    //
-    // Example: Reset password
-    //
-    //response = await TonicPow.resetPassword('2fc8ac4914bc423c8652f714e5c639ee','TestPwChanged!','TestPwChanged!')
-    //console.log('reset password success - email: ', response.email)
+    console.log(tpow.session.userCookie)
 
     //
     // Example: Create an advertiser profile
@@ -179,20 +45,20 @@ let apiKey = process.env.TONICPOW_API_KEY || ''
       homepage_url:'https://tonicpow.com',
       icon_url: 'https://tonicpow.com/images/logos/apple-touch-icon.png',
     }
-    advertiser = await TonicPow.createAdvertiserProfile(advertiser)
+    advertiser = await tpow.createAdvertiserProfile(advertiser)
     console.log('advertiser created', advertiser)
 
     //
     // Example: Get an advertiser profile
     //
-    advertiser = await TonicPow.getAdvertiserProfile(advertiser.id)
+    advertiser = await tpow.getAdvertiserProfile(advertiser.id)
     console.log('advertiser found: '+advertiser.name)
 
     //
     // Example: Update an advertiser profile
     //
     advertiser.name = 'Acme Advertising'
-    advertiser = await TonicPow.updateAdvertiserProfile(advertiser)
+    advertiser = await tpow.updateAdvertiserProfile(advertiser)
     console.log('updated name: '+advertiser.name)
 
     //
@@ -210,20 +76,20 @@ let apiKey = process.env.TONICPOW_API_KEY || ''
       title: 'TonicPow Offers',
       expires_at: date.toISOString(), // Optional expiration date (time.RFC3339)
     }
-    campaign = await TonicPow.createCampaign(campaign)
+    campaign = await tpow.createCampaign(campaign)
     console.log('campaign created', campaign)
 
     //
     // Example: Get a campaign
     //
-    campaign = await TonicPow.getCampaign(campaign.id)
+    campaign = await tpow.getCampaign(campaign.id)
     console.log('campaign found: '+campaign.title)
 
     //
     // Example: Update a campaign
     //
     campaign.title = 'TonicPow Offers Campaign'
-    campaign = await TonicPow.updateCampaign(campaign)
+    campaign = await tpow.updateCampaign(campaign)
     console.log('updated title: '+campaign.title)
 
     //
@@ -237,20 +103,20 @@ let apiKey = process.env.TONICPOW_API_KEY || ''
       payout_type: 'flat',
       title: 'Landing Page Leads'
     }
-    goal = await TonicPow.createGoal(goal)
+    goal = await tpow.createGoal(goal)
     console.log('goal created', goal)
 
     //
     // Example: Get a goal
     //
-    goal = await TonicPow.getGoal(goal.id)
+    goal = await tpow.getGoal(goal.id)
     console.log('goal found: '+goal.title)
 
     //
     // Example: Update a goal
     //
     goal.title = 'Landing Page Leads Goal'
-    goal = await TonicPow.updateGoal(goal)
+    goal = await tpow.updateGoal(goal)
     console.log('updated title: '+goal.title)
 
     //
@@ -264,7 +130,7 @@ let apiKey = process.env.TONICPOW_API_KEY || ''
       payout_type: 'percent',
       title: '10% Commissions'
     }
-    goalPercent = await TonicPow.createGoal(goalPercent)
+    goalPercent = await tpow.createGoal(goalPercent)
     console.log('goal created', goalPercent)
 
     //
@@ -275,25 +141,25 @@ let apiKey = process.env.TONICPOW_API_KEY || ''
       user_id: user.id,
       // custom_short_code: user.first_name + user.id + campaign.id,
     }
-    link = await TonicPow.createLink(link)
+    link = await tpow.createLink(link)
     console.log('link created', link.short_code)
 
     //
     // Example: Get a link
     //
-    link = await TonicPow.getLink(link.id)
+    link = await tpow.getLink(link.id)
     console.log('link found by id: '+link.id)
 
     //
     // Example: Check a link
     //
-    link = await TonicPow.checkLink(link.short_code)
+    link = await tpow.checkLink(link.short_code)
     console.log('link found by code: '+link.short_code)
 
     //
     // Example: Get campaign via short code
     //
-    campaign = await TonicPow.getCampaignByShortCode(link.short_code)
+    campaign = await tpow.getCampaignByShortCode(link.short_code)
     console.log('campaign found: '+campaign.title)
 
     //
@@ -304,48 +170,48 @@ let apiKey = process.env.TONICPOW_API_KEY || ''
       user_id: user.id,
       custom_short_code: user.first_name + someRandomNumber,
     }
-    link = await TonicPow.createLink(link)
+    link = await tpow.createLink(link)
     console.log('link created', link.short_code)
 
     //
     // Example: List of Get Links by User
     //
-    let linkResults = await TonicPow.listLinksByUserID(user.id)
+    let linkResults = await tpow.listLinksByUserID(user.id)
     //console.log(linkResults)
     console.log('links found: '+linkResults.results)
 
     //
     // Example: List of campaigns
     //
-    let campaignResults = await TonicPow.listCampaigns('',1,5,'balance','desc')
+    let campaignResults = await tpow.listCampaigns('',1,5,'balance','desc')
     //console.log(campaignResults)
     console.log('campaigns found: '+campaignResults.results)
 
     //
     // Example: Campaigns Feed
     //
-    let campaignFeed = await TonicPow.campaignsFeed()
+    let campaignFeed = await tpow.campaignsFeed()
     //console.log(campaignFeed)
     console.log('campaigns RSS feed found - length: '+campaignFeed.length)
 
     //
     // Example: Campaign Statistics
     //
-    let campaignStats = await TonicPow.campaignStatistics()
+    let campaignStats = await tpow.campaignStatistics()
     //console.log(campaignStats)
     console.log('campaigns stats found - active: '+campaignStats.active)
 
     //
     // Example: List of campaigns (by advertiser)
     //
-    campaignResults = await TonicPow.listCampaignsByAdvertiserProfile(advertiser.id)
+    campaignResults = await tpow.listCampaignsByAdvertiserProfile(advertiser.id)
     //console.log(campaigns)
     console.log('campaigns by advertiser found: '+campaignResults.results)
 
     //
     // Example: Get of campaigns by Url
     //
-    campaignResults = await TonicPow.listCampaignsByUrl(campaignResults.campaigns[0].target_url)
+    campaignResults = await tpow.listCampaignsByUrl(campaignResults.campaigns[0].target_url)
     //console.log(campaigns)
     console.log('campaigns found by url: '+campaignResults.results)
 
@@ -356,13 +222,13 @@ let apiKey = process.env.TONICPOW_API_KEY || ''
       link_id: link.id,
       custom_dimensions: "any custom data attributes",
     }
-    visitorSession = await TonicPow.createVisitorSession(visitorSession)
+    visitorSession = await tpow.createVisitorSession(visitorSession)
     console.log('session created', visitorSession.tncpw_session)
 
     //
     // Example: Get a Visitor Session
     //
-    visitorSession = await TonicPow.getVisitorSession(visitorSession.tncpw_session)
+    visitorSession = await tpow.getVisitorSession(visitorSession.tncpw_session)
     console.log('session found: '+visitorSession.tncpw_session)
 
     //
@@ -375,7 +241,7 @@ let apiKey = process.env.TONICPOW_API_KEY || ''
       referer:           "https://somewebsite.com/page",                   // If there was a referer
       user_agent:        "Mozilla/5.0 Chrome/51.0.2704.64 Safari/537.36",  // Visitor's user agent
     }
-    visitorSession = await TonicPow.createVisitorSession(visitorSession)
+    visitorSession = await tpow.createVisitorSession(visitorSession)
     console.log('session created', visitorSession.tncpw_session)
 
     //
@@ -390,19 +256,19 @@ let apiKey = process.env.TONICPOW_API_KEY || ''
     // Example: Convert a goal (by session - from cookie)
     //
     let userHeaderCookie = '__cfduid=dd6545b872516b240cb6185c97c3ab02; _ga=GA1.2.741780225.1580598550; _gid=GA1.2.510252994.1580598550; tncpw_session='+visitorSession.tncpw_session+'\n'
-    let conversion = await TonicPow.createConversionByGoalID(goal.id, userHeaderCookie, 'my custom attributes')
+    let conversion = await tpow.createConversionByGoalID(goal.id, userHeaderCookie, 'my custom attributes')
     console.log('conversion successful', conversion)
 
     //
     // Example: Convert a goal (by user) (delayed)
     //
-    conversion = await TonicPow.createConversionByUserID(1, 1, 'my custom attributes', 0, 10)
+    conversion = await tpow.createConversionByUserID(1, 1, 'my custom attributes', 0, 10)
     console.log('conversion successful', conversion)
 
     //
     // Example: Cancel a Delayed Conversion
     //
-    conversion = await TonicPow.cancelConversion(conversion.id,  'not needed anymore')
+    conversion = await tpow.cancelConversion(conversion.id,  'not needed anymore')
     console.log('conversion status', conversion.status)
 
     //
@@ -416,14 +282,8 @@ let apiKey = process.env.TONICPOW_API_KEY || ''
     //
     // Example: Get a current rate
     //
-    let rate = await TonicPow.getCurrentRate('usd',0.00)
+    let rate = await tpow.getCurrentRate('usd',0.00)
     console.log('price in satoshis', rate.price_in_satoshis)
-
-    //
-    // Example: Logout user
-    //
-    let logout = await TonicPow.logoutUser(cookieHeader)
-    console.log(logout, "user cookie", TonicPow.session.userCookie)
 
   } catch(e){
     console.error(e)
