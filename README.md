@@ -128,9 +128,9 @@ There is also a [Go implementation](https://github.com/tonicpow/go-tonicpow) for
 <br/>
 
 ## Maintainers
-| [<img src="https://github.com/mrz1836.png" height="50" alt="MrZ" />](https://github.com/mrz1836) | [<img src="https://github.com/rohenaz.png" height="50" alt="Satchmo" />](https://github.com/rohenaz) | [<img src="https://github.com/attilaaf.png" height="50" alt="Atilla" />](https://github.com/attilaaf) |
-|:---:|:---:|:---:|
-| [MrZ](https://github.com/mrz1836) | [Satchmo](https://github.com/rohenaz) | [Atilla](https://github.com/attilaaf) |
+| [<img src="https://github.com/mrz1836.png" height="50" alt="MrZ" />](https://github.com/mrz1836) | [<img src="https://github.com/rohenaz.png" height="50" alt="Satchmo" />](https://github.com/rohenaz) |
+|:---:|:---:|
+| [MrZ](https://github.com/mrz1836) | [Satchmo](https://github.com/rohenaz) |
                                                                                                                                                            
 Support the development of this project and the [TonicPow](https://tonicpow.com/) team 🙏
 
