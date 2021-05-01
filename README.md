@@ -24,8 +24,9 @@
 <br/>
 
 ## Getting Started
-This is a JavaScript library that has complete coverage for the [TonicPow API](https://docs.tonicpow.com).
-Familiar with Go? Here's an [example in Go](https://github.com/tonicpow/go-tonicpow).
+This is a backend JavaScript library that has complete coverage for the [TonicPow API](https://docs.tonicpow.com).
+
+There is also a [Go implementation](https://github.com/tonicpow/go-tonicpow) for this package.
 
 #### Prerequisites
 - You have a [TonicPow _api_key_](https://docs.tonicpow.com)
@@ -41,16 +42,22 @@ And load the module in your project:
 ```javascript 
 import TonicPow from 'tonicpow-js'
 
-const api = new TonicPow('your-api-key')
+const tpow = new TonicPow('your-api-key')
 ``` 
 
-View [examples](examples/examples.js) of using this package.
- 
+#### Usage
+Fire a conversion goal:
+```javascript
+const result = tpow.createConversionByGoalName(
+  "goal_name", "tncpw_session_goes_here"
+);
+```
+
+For more use cases, see the [examples](examples/examples.js) of using this package.
+
 #### Features
 - [Config & Session](lib/api.js) are completely configurable
 - Supports both pure API token context and user token context (run your own site)
-- Automatically handles cookies and updating session tokens
-- Set tokens using [cookie headers](examples/examples.js), automatically parses cookie values
 - Use our [front_end.js](front_end.md) for capturing a visitor session (goal conversions)
 - Coverage for the [TonicPow.com API](https://docs.tonicpow.com/)
     - [x] [Authentication](https://docs.tonicpow.com/#632ed94a-3afd-4323-af91-bdf307a399d2)
@@ -118,14 +125,7 @@ Always use the language's best practices!
 
 <br/>
 
-## Usage
-Back-end package for interacting with the [TonicPow API](https://docs.tonicpow.com)
 
-View [full demo examples](examples/examples.js) of using the package.
-
-There is also a [Go implementation](https://github.com/tonicpow/go-tonicpow) for this package.
-
-<br/>
 
 ## Maintainers
 | [<img src="https://github.com/mrz1836.png" height="50" alt="MrZ" />](https://github.com/mrz1836) | [<img src="https://github.com/rohenaz.png" height="50" alt="Satchmo" />](https://github.com/rohenaz) |
