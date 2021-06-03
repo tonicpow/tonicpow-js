@@ -111,7 +111,7 @@ describe('basic tests', function () {
     const response = await tonicPow.getCampaign(243);
     expect(response).toEqual(campaignData.return);
     expect(mockAxios.get).toHaveBeenCalledWith(
-      `https://api.tonicpow.com/v1/campaigns/details/243`,
+      `https://api.tonicpow.com/v1/campaigns/details/?id=243`,
       options,
     );
   });
