@@ -68,7 +68,7 @@
     "eslint-plugin-import": "^2.23.4",
     "jest": "^27.0.4",
     "jest-cli": "^27.0.4",
-    "npm-check": "^5.9.2",
+    "npm-check": "^4.1.4",
     "pre-commit": "^1.2.2",
     "regenerator-runtime": "^0.13.7",
     "rimraf": "3.0.2",
