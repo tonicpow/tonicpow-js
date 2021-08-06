@@ -138,7 +138,8 @@ pull_request_rules:
   - name: Welcome New Contributors
     conditions:
       - and:
-          - author!=dependabot
+          - author!=dependabot[bot]
+          - author!=mergify[bot]
           - author!=mrz1836
           - author!=rohenaz
           - author!=icellan
