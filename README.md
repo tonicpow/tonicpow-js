@@ -5,7 +5,8 @@
 [![last commit](https://img.shields.io/github/last-commit/tonicpow/tonicpow-js.svg?style=flat)](https://github.com/tonicpow/tonicpow-js/commits/master)
 [![Release](https://img.shields.io/github/release-pre/tonicpow/tonicpow-js.svg?style=flat)](https://github.com/tonicpow/tonicpow-js/releases)
 [![Npm](https://img.shields.io/npm/v/tonicpow-js?style=flat)](https://www.npmjs.com/package/tonicpow-js)
-[![standard-readme compliant](https://img.shields.io/badge/standard--readme-OK-green.svg?style=flat)](https://github.com/RichardLitt/standard-readme)
+[![Build Status](https://img.shields.io/github/workflow/status/tonicpow/tonicpow-js/CodeQL?logo=github&v=5)](https://github.com/tonicpow/widget/actions)
+[![Mergify Status](https://img.shields.io/endpoint.svg?url=https://gh.mergify.io/badges/tonicpow/tonicpow-js&style=flat&v=3)](https://mergify.io)
 [![slack](https://img.shields.io/badge/slack-tonicpow-orange.svg?style=flat)](https://atlantistic.slack.com/app_redirect?channel=tonicpow)
 
 <br/>
@@ -102,7 +103,7 @@ install              Installs the dependencies for the packge
 lint                 Runs the standard-js lint tool
 outdated             Checks for outdated packages via npm
 publish              Will publish the version to npm
-release              Full production release (creates release in Github)
+release              Full production release (creates release in Github, deploy to npm)
 release-snap         Test the full release (build binaries)
 release-test         Full production test release (everything except deploy)
 replace-version      Replaces the version in HTML/JS (pre-deploy)
@@ -125,8 +126,6 @@ Always use the language's best practices!
 
 <br/>
 
-
-
 ## Maintainers
 | [<img src="https://github.com/mrz1836.png" height="50" alt="MrZ" />](https://github.com/mrz1836) | [<img src="https://github.com/rohenaz.png" height="50" alt="Satchmo" />](https://github.com/rohenaz) |
 |:---:|:---:|
@@ -138,6 +137,16 @@ Support the development of this project and the [TonicPow](https://tonicpow.com/
 
 ## Contributing
 Feel free to dive in! [Open an issue](https://github.com/tonicpow/tonicpow-js/issues/new) or submit PRs.
+
+### How can I help?
+All kinds of contributions are welcome :raised_hands:!
+The most basic way to show your support is to star :star2: the project, or to raise issues :speech_balloon:.
+You can also support this project by [becoming a sponsor on GitHub](https://github.com/sponsors/tonicpow) :clap:
+or by making a [**bitcoin donation**](https://tonicpow.com/?utm_source=github&utm_medium=sponsor-link&utm_campaign=tonicpow-js&utm_term=tonicpow-js&utm_content=tonicpow-js) to ensure this journey continues indefinitely! :rocket:
+
+
+[![Stars](https://img.shields.io/github/stars/tonicpow/tonicpow-js?label=Please%20like%20us&style=social)](https://github.com/tonicpow/tonicpow-js/stargazers)
+
 
 <br/>
 
