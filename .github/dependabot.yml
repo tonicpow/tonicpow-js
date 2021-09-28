@@ -1,7 +1,8 @@
-# Basic dependabot.yml to update gomod
+# Basic dependabot.yml to update npm & github actions
 
 version: 2
 updates:
+  # Maintain dependencies for npm
   - package-ecosystem: "npm"
     target-branch: "master"
     directory: "/"
