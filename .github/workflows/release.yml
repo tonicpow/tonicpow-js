@@ -27,7 +27,7 @@ jobs:
           node-version: 16
           registry-url: https://registry.npmjs.org/
       - name: Install all deps
-        run: yarn install
+        run: npm install
       - name: Run GoReleaser
         uses: goreleaser/goreleaser-action@v2.7.0
         with:
