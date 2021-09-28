@@ -28,6 +28,10 @@ jobs:
           registry-url: https://registry.npmjs.org/
       - name: Install all deps
         run: npm ci
+      - name: Publish to NPM
+        run: make publish
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
       - name: Run GoReleaser
         uses: goreleaser/goreleaser-action@v2.7.0
         with:
@@ -37,4 +41,3 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
-          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
