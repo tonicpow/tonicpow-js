@@ -1,6 +1,6 @@
 {
   "name": "tonicpow-js",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "description": "TonicPow API Library in JS - https://docs.tonicpow.com",
   "main": "dist/api.js",
   "module": "./module/api.js",
@@ -50,7 +50,7 @@
   ],
   "homepage": "https://docs.tonicpow.com",
   "devDependencies": {
-    "@babel/cli": "^7.14.3",
+    "@babel/cli": "^7.15.7",
     "@babel/core": "^7.14.6",
     "@babel/plugin-transform-runtime": "^7.14.3",
     "@babel/polyfill": "^7.12.1",
@@ -66,8 +66,8 @@
     "eslint": "^7.29.0",
     "eslint-config-airbnb-base": "^14.2.1",
     "eslint-plugin-import": "^2.23.4",
-    "jest": "^27.0.4",
-    "jest-cli": "^27.0.4",
+    "jest": "^27.2.3",
+    "jest-cli": "^27.2.3",
     "npm-check": "^5.9.2",
     "pre-commit": "^1.2.2",
     "regenerator-runtime": "^0.13.7",
