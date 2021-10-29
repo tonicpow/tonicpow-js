@@ -58,7 +58,7 @@
     "@babel/register": "^7.12.10",
     "@jest/globals": "^27.0.3",
     "babel-core": "^7.0.0-bridge.0",
-    "babel-eslint": "^10.1.0",
+    "@babel/eslint-parser": "^7.15.8",
     "babel-jest": "^27.0.2",
     "babel-plugin-add-module-exports": "^1.0.4",
     "babel-preset-minify": "^0.5.1",
