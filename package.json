@@ -1,6 +1,6 @@
 {
   "name": "tonicpow-js",
-  "version": "0.2.5",
+  "version": "0.2.6",
   "description": "TonicPow API Library in JS - https://docs.tonicpow.com",
   "main": "dist/api.js",
   "module": "./module/api.js",
@@ -13,7 +13,7 @@
     "email": "support@tonicpow.com",
     "url": "https://docs.tonicpow.com"
   },
-  "license": "Open BSV",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/tonicpow/tonicpow-js/issues"
   },

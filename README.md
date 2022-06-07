@@ -6,7 +6,7 @@
 [![Release](https://img.shields.io/github/release-pre/tonicpow/tonicpow-js.svg?style=flat)](https://github.com/tonicpow/tonicpow-js/releases)
 [![Npm](https://img.shields.io/npm/v/tonicpow-js?style=flat)](https://www.npmjs.com/package/tonicpow-js)
 [![Build Status](https://img.shields.io/github/workflow/status/tonicpow/tonicpow-js/CodeQL?logo=github&v=5)](https://github.com/tonicpow/widget/actions)
-[![Mergify Status](https://img.shields.io/endpoint.svg?url=https://gh.mergify.io/badges/tonicpow/tonicpow-js&style=flat&v=3)](https://mergify.io)
+[![Mergify Status](https://img.shields.io/endpoint.svg?url=https://api.mergify.com/v1/badges/tonicpow/tonicpow-js&style=flat&v=3)](https://mergify.io)
 [![slack](https://img.shields.io/badge/slack-tonicpow-orange.svg?style=flat)](https://atlantistic.slack.com/app_redirect?channel=tonicpow)
 
 <br/>
@@ -150,4 +150,4 @@ or by making a [**bitcoin donation**](https://tonicpow.com/?utm_source=github&ut
 <br/>
 
 ## License
-[![License](https://img.shields.io/badge/license-Open%20BSV-brightgreen.svg?style=flat)](/LICENSE)
+[![License](https://img.shields.io/github/license/tonicpow/tonicpow-js.svg?style=flat&v=1)](LICENSE)
