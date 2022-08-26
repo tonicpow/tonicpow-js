@@ -56,7 +56,7 @@
     "@babel/polyfill": "^7.12.1",
     "@babel/preset-env": "^7.14.4",
     "@babel/register": "^7.12.10",
-    "@jest/globals": "^28.0.0",
+    "@jest/globals": "^29.0.0",
     "babel-core": "^7.0.0-bridge.0",
     "@babel/eslint-parser": "^7.15.8",
     "babel-jest": "^28.0.2",
