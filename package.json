@@ -76,7 +76,7 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.14.6",
-    "axios": "^0.27.1",
+    "axios": "^1.0.0",
     "browser-or-node": "^2.0.0"
   },
   "files": [
