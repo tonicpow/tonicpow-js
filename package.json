@@ -71,7 +71,7 @@
     "npm-check": "^6.0.1",
     "pre-commit": "^1.2.2",
     "regenerator-runtime": "^0.13.7",
-    "rimraf": "4.0.7",
+    "rimraf": "4.1.0",
     "run-sequence": "2.2.1"
   },
   "dependencies": {
