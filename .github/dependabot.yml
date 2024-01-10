@@ -11,9 +11,9 @@ updates:
       # Check for npm updates at 9am UTC (5am EST)
       time: "10:00"
     reviewers:
-      - "mrz1836"
+      - "rohenaz"
     assignees:
-      - "mrz1836"
+      - "rohenaz"
     # Labels must be created first
     labels:
       - "update"
@@ -26,9 +26,9 @@ updates:
       interval: "weekly"
       day: "monday"
     reviewers:
-      - "mrz1836"
+      - "rohenaz"
     assignees:
-      - "mrz1836"
+      - "rohenaz"
     labels:
       - "chore"
     open-pull-requests-limit: 10
